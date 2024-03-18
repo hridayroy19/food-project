@@ -1,7 +1,7 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "/logo.png";
 
-
+import Login from "../pages/Login"
 
 const Navbar = () => {
 
@@ -74,11 +74,10 @@ const Navbar = () => {
       className={`max-w-screen-2xl bg-slate-100 z-[10001] container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out`}
     >
       <div
-        className={`navbar xl:px-24 ${
-          isSticky
+        className={`navbar xl:px-24 ${isSticky
             ? "shadow-md bg-base-100 transition-all duration-300 ease-in-out"
             : ""
-        }`}
+          }`}
       >
         <div className="navbar-start">
           <div className="dropdown justify-between">
@@ -151,8 +150,8 @@ const Navbar = () => {
               <span className="badge badge-sm indicator-item">8</span>
             </div>
           </label>
-            <div>Login</div>
-      
+          <button onClick={()=>document.getElementById('my_modal_5').showModal()} className="bg-green px-6 py-2 rounded-full">Login</button> <Login></Login>
+          
         </div>
       </div>
     </header>
