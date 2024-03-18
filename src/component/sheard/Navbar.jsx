@@ -1,7 +1,11 @@
 import React, {  useEffect, useState } from "react";
 import logo from "/logo.png";
 
+
+
 const Navbar = () => {
+
+
   const [isSticky, setSticky] = useState(false);
 
   useEffect(() => {
@@ -23,7 +27,7 @@ const Navbar = () => {
   const navItems = (
     <>
       <li>
-        <a className="text-green">Home</a>
+        <a href="/" className="text-green">Home</a>
       </li>
       <li tabIndex={0}>
         <details>
@@ -58,13 +62,16 @@ const Navbar = () => {
         </details>
       </li>
       <li>
-        <a>Offers</a>
+        <a href="/offer">Offers</a>
       </li>
     </>
   );
+
+
+
   return (
     <header
-      className={`max-w-screen-2xl z-[10001] container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out`}
+      className={`max-w-screen-2xl bg-slate-100 z-[10001] container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out`}
     >
       <div
         className={`navbar xl:px-24 ${

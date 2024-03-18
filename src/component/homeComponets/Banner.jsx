@@ -1,15 +1,27 @@
 import React from "react";
-import bannerImg from "../../../public/images/banner.png";
-
+// import bannerImg from "../../../public/images/banner.png";
+import Lottie from "react-lottie";
+import okay from "../../../public/images/logo.json"
 const Banner = () => {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: okay,
+    rendererSettings: {
+    preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
   return (
     <div className="max-w-screen-2xl container mx-auto xl:px-24 bg-gradient-to-r from-0% from-[#FAFAFA] to-[#FCFCFC] to-100%">
       <div className="py-24 flex flex-col md:flex-row-reverse items-center justify-between gap-8">
 
         {/* img */}
         <div className="md:w-1/2">
-          <img src={bannerImg} alt="" />
-          <div className="flex flex-col md:flex-row items-center justify-around -mt-14 gap-4">
+          {/* <img src={bannerImg} alt="" /> */}
+          <div className="flex-1 ">
+        <Lottie options={defaultOptions} width={400} height={450} />
+      </div>
+          {/* <div className="flex flex-col md:flex-row items-center justify-around -mt-14 gap-4">
             <div className="bg-white px-3 py-2 rounded-2xl flex items-center gap-3 shadow-sm w-64">
               <img src="/images/home/b-food1.png" alt=""  className="rounded-2xl"/>
               <div className="space-y-1">
@@ -92,7 +104,7 @@ const Banner = () => {
                 <p className="text-red">$18.00</p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* texts */}

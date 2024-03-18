@@ -11,8 +11,8 @@ const Testimonials = () => {
         </div>
         <div className="md:w-1/2">
           <div className="text-left md:w-4/5">
-            <p className="subtitle">Testimonials</p>
-            <h2 className="title">What Our Customers Say About Us</h2>
+            <p className="text-red uppercase tracking-wide font-semibold text-lg">Testimonials</p>
+            <h2 className="text-4xl md:text-5xl md:leading-snug font-bold my-2">What Our Customers Say About Us</h2>
             <blockquote className="my-5 text-secondary leading-[30px]">
               “I had the pleasure of dining at Foodi last night, and I'm still
               raving about the experience! The attention to detail in
