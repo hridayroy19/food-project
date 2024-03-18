@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-import Signup from "./SignUp";
 
 const Login = () => {
     return (
@@ -32,7 +30,7 @@ const Login = () => {
                         </label>
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn bg-green text-white">Login</button>
+                        <button type="submit" className="btn bg-green text-white">Login</button>
                     </div>
                 </form>
                 <div className="text-center"> Are you new here? || <a href="/signUp">Sign Up</a> 

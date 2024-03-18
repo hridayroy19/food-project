@@ -1,37 +1,88 @@
+import { Link } from "react-router-dom";
 
 
 const SignUp = () => {
-    return (
-        <div>
-            <div className="hero min-h-screen bg-base-200">
-  <div className="hero-content flex-col lg:flex-row-reverse">
-    
-    <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <form className="card-body">
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Email</span>
-          </label>
-          <input type="email" placeholder="email" className="input input-bordered" required />
-        </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Password</span>
-          </label>
-          <input type="password" placeholder="password" className="input input-bordered" required />
-          <label className="label">
-            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-          </label>
-        </div>
-        <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-        </div>
-    );
-};
+  const handelSignup = e => {
+    e.preventDefault()
+    const from = e.target
+    const name = from.name.value
+    const email = from.email.value
+    const password = from.password.value
+    console.log(name, email, password);
+  }
 
+
+
+  return (
+    <div>
+      <div className="hero h-fit py-16">
+        <div className=" flex items-center flex-wrap md:w-full justify-around">
+          <div className=" w-full mx-5 text-center md:w-2/5">
+            <img
+              className=" mx-auto "
+              src="../../../public/logo.png"
+              alt=""
+            />
+            <h1 className="text-center font-bold text-2xl my-4">
+              Join for Exclusive Deals
+            </h1>
+            <p>Unlock your dream home with us! Join now for exclusive listings, personalized insights, and expert guidance. Your key to finding the perfect place to call home starts here.</p>
+          </div>
+          <div className="shadow-2xl bg-white rounded-xl mx-3 my-2 w-full md:w-2/5">
+            <form onSubmit={handelSignup} className="card-body w-full">
+              {/* Name input box */}
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="input input-bordered" />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Phone</span>
+                </label>
+                <input
+                  type="number"
+                  name="phone"
+                  placeholder="Your Name"
+                  className="input input-bordered" />
+              </div>
+
+              {/* Photo URL box */}
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo</span>
+                </label>
+                <input type="file" className="file-input file-input-bordered file-input-info w-full" />
+              </div>
+
+              {/* email input box */}
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Email</span>
+                </label>
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="input input-bordered"
+                />
+
+              </div>
+              {/* SignUp button  */}
+              <div className="form-control mt-6">
+                <button type="submit" className={`btn bg-green disabled:text-slate-600 hover:bg-orange-500 border-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-60`}>
+                  Sign up
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 export default SignUp;
+
