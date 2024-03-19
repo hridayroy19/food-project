@@ -1,17 +1,40 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Authcontext } from "../provider/AuthProvider";
+import toast from "react-hot-toast";
 
 
 const SignUp = () => {
+
+  const {creatUser} = useContext(Authcontext)
   const handelSignup = e => {
     e.preventDefault()
     const from = e.target
     const name = from.name.value
     const email = from.email.value
+    const photo = from.photo.value
     const password = from.password.value
-    console.log(name, email, password);
+   
+    const userInfo ={
+      name,
+       email,
+        photo,
+       password
+
+    }
+
+    console.log(userInfo);
+    creatUser(email,password)
+    .then(res => {console.log(res.user)
+    return toast.success('Successfully toasted!')
+
+    })
+    
+    .catch(error =>{
+      console.log(error);
+      setRegisterError()
+      return toast.error("all ready use please try again ")
+    })
   }
-
-
 
   return (
     <div>
@@ -37,26 +60,16 @@ const SignUp = () => {
                 </label>
                 <input
                   type="text"
+                  name="name"
                   placeholder="Your Name"
                   className="input input-bordered" />
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Phone</span>
-                </label>
-                <input
-                  type="number"
-                  name="phone"
-                  placeholder="Your Name"
-                  className="input input-bordered" />
-              </div>
-
               {/* Photo URL box */}
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Photo</span>
                 </label>
-                <input type="file" className="file-input file-input-bordered file-input-info w-full" />
+                <input type="text" name="photo" className="file-input file-input-bordered file-input-info w-full" />
               </div>
 
               {/* email input box */}
@@ -66,6 +79,19 @@ const SignUp = () => {
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  className="input input-bordered"
+                />
+
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Password</span>
+                </label>
+                <input
+                  type="password"
+                  name="password"
                   placeholder="Your Email"
                   className="input input-bordered"
                 />
@@ -73,7 +99,7 @@ const SignUp = () => {
               </div>
               {/* SignUp button  */}
               <div className="form-control mt-6">
-                <button type="submit" className={`btn bg-green disabled:text-slate-600 hover:bg-orange-500 border-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-60`}>
+                <button type="submit"  className={`btn bg-green disabled:text-slate-600 hover:bg-orange-500 border-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-60`}>
                   Sign up
                 </button>
               </div>
