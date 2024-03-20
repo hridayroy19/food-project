@@ -1,8 +1,38 @@
+import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
+import { Authcontext } from "../provider/AuthProvider";
+import toast from "react-hot-toast";
+import { TotpSecret } from "firebase/auth";
 
 
 const Login = () => {
+
+const { sigIn }=useContext(Authcontext)
+
+ const handelLogin = e =>{
+    e.preventDefault()
+    const from = e.target
+    const email = from.email.value
+    const password = from.password.value
+
+    console.log(email,password);
+
+    sigIn(email,password)
+    .then(res =>{ console.log(res.user)
+    return toast.success(" success full login ")
+})
+ .catch(error =>{
+    console.log(error);
+    return toast.error("error login plese try agin")
+ })
+
+
+
+
+ }
+
+
     return (
         <dialog id="my_modal_5" className="modal modal-middle sm:modal-middle">
             <div className="modal-box">
@@ -15,7 +45,7 @@ const Login = () => {
                     </form>
                 </div>
 
-                <form className="card-body " method="dialog">
+                <form onSubmit={handelLogin} className="card-body " method="dialog">
                     <h3 className="font-bold text-2xl">Please Login </h3>
                     <div className="form-control">
                         <label className="label">

@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { Authcontext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 
 const SignUp = () => {
 
   const {creatUser} = useContext(Authcontext)
+  const naviget = useNavigate()
   const handelSignup = e => {
     e.preventDefault()
     const from = e.target
@@ -25,13 +27,13 @@ const SignUp = () => {
     console.log(userInfo);
     creatUser(email,password)
     .then(res => {console.log(res.user)
+    naviget("/")
     return toast.success('Successfully toasted!')
 
     })
     
     .catch(error =>{
       console.log(error);
-      setRegisterError()
       return toast.error("all ready use please try again ")
     })
   }
