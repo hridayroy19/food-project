@@ -1,3 +1,6 @@
+import { FaGoogle } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
+
 
 const Login = () => {
     return (
@@ -35,11 +38,20 @@ const Login = () => {
                 </form>
                 <div className="text-center"> Are you new here? || <a href="/signUp">Sign Up</a> 
                 
-                   <div className=" mt-3">
-                    git facebook
+                  
+                </div>    
+                <div className=" mt-3   ">
+                   <div className=" w-full text-center justify-center flex gap-2 text-xl  mx-auto">
+                   <button className="btn btn-circle hover:text-white hover:bg-green bg-gray-300">
+                   <FaFacebook></FaFacebook>
+                    </button> 
+                    <button className="btn btn-circle hover:text-white bg-gray-300 hover:bg-green">
+                    <FaGoogle></FaGoogle>
+                    </button>
                    </div>
-                </div>        
+                   </div>    
             </div>
+          
         </dialog>
     );
 };
