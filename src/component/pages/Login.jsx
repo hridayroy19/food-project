@@ -8,7 +8,7 @@ import { TotpSecret } from "firebase/auth";
 
 const Login = () => {
 
-const { sigIn }=useContext(Authcontext)
+const { sigIn , signInWithgoogle, }=useContext(Authcontext)
 
  const handelLogin = e =>{
     e.preventDefault()
@@ -27,10 +27,22 @@ const { sigIn }=useContext(Authcontext)
     return toast.error("error login plese try agin")
  })
 
-
-
-
  }
+
+//  google login
+
+const handelGoogleSignWith=()=>{
+    signInWithgoogle()
+    .then(res=>{
+      console.log(res)
+  
+    })
+    .catch(error=>{
+      console.erro(error)
+    
+    })
+}
+
 
 
     return (
@@ -75,7 +87,7 @@ const { sigIn }=useContext(Authcontext)
                    <button className="btn btn-circle hover:text-white hover:bg-green bg-gray-300">
                    <FaFacebook></FaFacebook>
                     </button> 
-                    <button className="btn btn-circle hover:text-white bg-gray-300 hover:bg-green">
+                    <button onClick={handelGoogleSignWith} className="btn btn-circle hover:text-white bg-gray-300 hover:bg-green">
                     <FaGoogle></FaGoogle>
                     </button>
                    </div>
