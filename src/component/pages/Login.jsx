@@ -3,9 +3,6 @@ import { FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { Authcontext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
-import { TotpSecret } from "firebase/auth";
-
-
 const Login = () => {
 
 const { sigIn , signInWithgoogle, }=useContext(Authcontext)
