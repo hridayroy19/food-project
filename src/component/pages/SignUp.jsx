@@ -13,13 +13,11 @@ const SignUp = () => {
     const from = e.target
     const name = from.name.value
     const email = from.email.value
-    const photo = from.photo.value
     const password = from.password.value
    
     const userInfo ={
       name,
        email,
-        photo,
        password
 
     }
@@ -40,7 +38,7 @@ const SignUp = () => {
 
   return (
     <div>
-      <div className="hero h-fit py-16">
+      <div className="hero h-fit py-36">
         <div className=" flex items-center flex-wrap md:w-full justify-around">
           <div className=" w-full mx-5 text-center md:w-2/5">
             <img
@@ -53,7 +51,7 @@ const SignUp = () => {
             </h1>
             <p>Unlock your dream home with us! Join now for exclusive listings, personalized insights, and expert guidance. Your key to finding the perfect place to call home starts here.</p>
           </div>
-          <div className="shadow-2xl bg-white rounded-xl mx-3 my-2 w-full md:w-2/5">
+          <div className="shadow-2xl border bg-white rounded-xl mx-3 my-2 w-full md:w-2/5">
             <form onSubmit={handelSignup} className="card-body w-full">
               {/* Name input box */}
               <div className="form-control">
@@ -65,13 +63,6 @@ const SignUp = () => {
                   name="name"
                   placeholder="Your Name"
                   className="input input-bordered" />
-              </div>
-              {/* Photo URL box */}
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Photo</span>
-                </label>
-                <input type="text" name="photo" className="file-input file-input-bordered file-input-info w-full" />
               </div>
 
               {/* email input box */}

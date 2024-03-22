@@ -3,9 +3,14 @@ import { FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { Authcontext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
 const Login = () => {
 
 const { sigIn , signInWithgoogle, }=useContext(Authcontext)
+
+const loaction = useLocation();
+const navigate = useNavigate();
+const trans = location.state?.trans?.pathname || "/";
 
  const handelLogin = e =>{
     e.preventDefault()
@@ -17,7 +22,9 @@ const { sigIn , signInWithgoogle, }=useContext(Authcontext)
 
     sigIn(email,password)
     .then(res =>{ console.log(res.user)
+    navigate(trans , {replace: true})
     return toast.success(" success full login ")
+    
 })
  .catch(error =>{
     console.log(error);

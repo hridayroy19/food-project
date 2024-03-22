@@ -5,6 +5,7 @@ import Menu from "../component/pages/Menu";
 import Offer from "../component/pages/Offer";
 import Signup from "../component/pages/SignUp";
 import Login from "../component/pages/Login";
+import Profile from "../component/userComponet/Profile";
 
 
 const Router = createBrowserRouter([
@@ -29,6 +30,10 @@ const Router = createBrowserRouter([
       },{
         path:"/login",
         element:<Login></Login>
+      }
+      ,{
+        path:"/profile",
+        element:<Profile></Profile>
       }
 
     

@@ -3,10 +3,11 @@ import logo from "/logo.png";
 
 import Login from "../pages/Login"
 import { Authcontext } from "../provider/AuthProvider";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 const { user , logOut} = useContext(Authcontext)
-console.log(user?.displayURL);
+// console.log(user?.email);
 
 const handelSignout =()=>{
   logOut()
@@ -163,15 +164,18 @@ const handelSignout =()=>{
   <div className="dropdown dropdown-end">
   <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
     <div className="w-10 rounded-full">
-      <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
+      {
+        user.photoURL? <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
+        : <img src="https://i.ibb.co/4Y2KSb9/istockphoto-1300845620-612x612.jpg" alt="" />
+      }
     </div>
   </div>
   <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
     <li>
-      <a className="justify-between">
+      <Link to={"/profile"} className="justify-between">
         Profile
         <span className="badge">New</span>
-      </a>
+      </Link>
     </li>
     <li><a>Settings</a></li>
     <li><a onClick={handelSignout} >Logout</a></li>
