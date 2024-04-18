@@ -7,7 +7,7 @@ const Testimonials = () => {
     <div className="max-w-screen-2xl container mx-auto xl:px-24  px-4 py-8">
       <div className="flex flex-col md:flex-row items-center justify-between gap-12">
         <div className="md:w-1/2">
-          <img src="/images/home/testimonials/testimonials.png" alt="" />
+          <img src="https://i.ibb.co/C5QPB1P/jf3h-oqo3-210608-generated.jpg" alt="" />
         </div>
         <div className="md:w-1/2">
           <div className="text-left md:w-4/5">

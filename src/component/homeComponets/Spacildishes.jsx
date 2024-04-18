@@ -8,7 +8,7 @@ const SpecialDishes = () => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    fetch("/menu.json")
+    fetch("http://localhost:6001/menu")
       .then((res) => res.json())
       .then((data) => {
         const specials = data.filter((item) => item.category === "popular");

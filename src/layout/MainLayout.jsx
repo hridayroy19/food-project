@@ -6,28 +6,17 @@ import { useContext } from "react";
 import { Authcontext } from "../component/provider/AuthProvider";
 import Loading from "../component/sheard/Loading";
 
-
 const MainLayout = () => {
-
-    const { loading } = useContext(Authcontext)
-    return (
-        <>
-
-        {
-          loading? <Loading></Loading> : <div className="bg-[#FCFCFC] ">
-          <Navbar/>
-         <div className="min-h-screen">
-         <Outlet></Outlet>
-         </div>
-         <Toaster/>
-          <Footer/>
+  return (
+    <>
+      <Navbar />
+      <div className="min-h-screen">
+        <Outlet></Outlet>
       </div>
-
-        }
-
-
-        </>
-    );
+      <Toaster />
+      <Footer />
+    </>
+  );
 };
 
 export default MainLayout;

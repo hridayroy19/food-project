@@ -1,41 +1,40 @@
-import React, {useContext, useEffect, useState } from "react";
-import logo from "/logo.png";
+import React, { useContext, useEffect, useState } from "react";
 
-import Login from "../pages/Login"
+import Login from "../pages/Login";
 import { Authcontext } from "../provider/AuthProvider";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-const { user , logOut} = useContext(Authcontext)
-// console.log(user?.email);
+  const { user, logOut } = useContext(Authcontext);
+  // console.log(user?.email);
 
-const handelSignout =()=>{
-  logOut()
-  .then()
-  .catch()
-}
+  const handelSignout = () => {
+    logOut().then().catch();
+  };
   const [isSticky, setSticky] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY;
-      if (offset > 0) {
-        setSticky(true);
-      } else {
-        setSticky(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const offset = window.scrollY;
+  //     if (offset > 0) {
+  //       setSticky(true);
+  //     } else {
+  //       setSticky(false);
+  //     }
+  //   };
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   const navItems = (
     <>
       <li>
-        <a href="/" className="text-green">Home</a>
+        <a href="/" className="text-green">
+          Home
+        </a>
       </li>
       <li tabIndex={0}>
         <details>
@@ -75,17 +74,16 @@ const handelSignout =()=>{
     </>
   );
 
-
-
   return (
     <header
-      className={`max-w-screen-2xl bg-slate-100 z-[10001] container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out`}
+      className={`max-w-screen-2xl mb-10 bg-slate-100 z-[10001] container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out`}
     >
       <div
-        className={`navbar xl:px-24 ${isSticky
+        className={`navbar xl:px-24 ${
+          isSticky
             ? "shadow-md bg-base-100 transition-all duration-300 ease-in-out"
             : ""
-          }`}
+        }`}
       >
         <div className="navbar-start">
           <div className="dropdown justify-between">
@@ -113,7 +111,11 @@ const handelSignout =()=>{
             </ul>
           </div>
           <a href="/">
-            <img src={logo} alt="" />
+            <img
+              src="https://i.ibb.co/02JZx8y/green-leaf-food-hand-written-word-text-vector-23793802-removebg-preview.png"
+              alt=""
+              className="w-[70px] "
+            />
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -136,58 +138,84 @@ const handelSignout =()=>{
               />
             </svg>
           </button>
-          <label
-            tabIndex={0}
-            className="btn btn-ghost btn-circle hidden lg:flex items-center justify-center mr-3"
-          >
-            <div className="indicator">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+          {/* card item added */}
+          <Link to={"/cartPage"}>
+            <label
+              tabIndex={0}
+              className="btn btn-ghost btn-circle hidden lg:flex items-center justify-center mr-3"
+            >
+              <div className="indicator">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+                <span className="badge badge-sm indicator-item">8</span>
+              </div>
+            </label>
+          </Link>
+
+          {user ? (
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                />
-              </svg>
-              <span className="badge badge-sm indicator-item">8</span>
+                <div className="w-10 rounded-full">
+                  {user.photoURL ? (
+                    <img
+                      alt="Tailwind CSS Navbar component"
+                      src={user?.photoURL}
+                    />
+                  ) : (
+                    <img
+                      src="https://i.ibb.co/4Y2KSb9/istockphoto-1300845620-612x612.jpg"
+                      alt=""
+                    />
+                  )}
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <Link to={"/profile"} className="justify-between">
+                    Profile
+                    <span className="badge">New</span>
+                  </Link>
+                </li>
+                <li>
+                  <a>Settings</a>
+                </li>
+                <li>
+                  <a onClick={handelSignout}>Logout</a>
+                </li>
+              </ul>
             </div>
-          </label>
-
-          {
-  user ?
-  <div className="dropdown dropdown-end">
-  <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-    <div className="w-10 rounded-full">
-      {
-        user.photoURL? <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
-        : <img src="https://i.ibb.co/4Y2KSb9/istockphoto-1300845620-612x612.jpg" alt="" />
-      }
-    </div>
-  </div>
-  <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-    <li>
-      <Link to={"/profile"} className="justify-between">
-        Profile
-        <span className="badge">New</span>
-      </Link>
-    </li>
-    <li><a>Settings</a></li>
-    <li><a onClick={handelSignout} >Logout</a></li>
-  </ul>
-</div>
-  :        
- <>
-  <button onClick={()=>document.getElementById('my_modal_5').showModal()} className="bg-green px-6 py-2 rounded-full">Login</button>
-   <Login></Login></>
-
-}
-          
+          ) : (
+            <>
+              <button
+                onClick={() =>
+                  document.getElementById("my_modal_5").showModal()
+                }
+                className="bg-green px-6 py-2 rounded-full"
+              >
+                Login
+              </button>
+              <Login></Login>
+            </>
+          )}
         </div>
       </div>
     </header>

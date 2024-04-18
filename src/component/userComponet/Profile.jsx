@@ -5,8 +5,32 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { MdOutlineLocalPhone } from "react-icons/md";
 import { IoCloseSharp } from "react-icons/io5";
+import { Authcontext } from "../provider/AuthProvider";
+import { useForm } from "react-hook-form"
+import toast from "react-hot-toast";
 
 const Profile = () => {
+  const { user, updateProfileData } = useContext(Authcontext)
+  console.log(user?.photoURL);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+const onSubmit = (data) => {
+    const name = data.name;
+    const photoURL = data.photoURL;
+    updateProfileData({ name, photoURL })
+        .then(() => {
+          toast.success("Profile updated successfully!");
+
+        })
+        .catch((error) => {   
+            console.log(error);
+        });
+}
+  
 
   return (
     <>
@@ -23,7 +47,7 @@ const Profile = () => {
       <div className="lg:flex  xl:flex md:flex flex-row cursor-pointer gap-5  mb-5 px-7  justify-center ">
 
         <div className=" w-[300px]  relative ">
-          <img src="https://i.ibb.co/HpkpkSh/c29525367f90c3832119297e149102ed.jpg" alt="" className="w-full  h-[370px] object-cover   " />
+          <img src={user?.photoURL} alt="" className="w-full  h-[370px] object-cover   " />
 
           <div className="xl:bottom-[150px] lg:bottom-[170px] absolute md:bottom-[150px] bottom-[170px]  ml-8 text-xl  ">
             <a href="https://www.facebook.com"><p className="mt-4 mb-3  bg-yellow-300 hover:bg-yellow-600 p-1 py-2 "> <FaFacebook className="rounded-full  "></FaFacebook> </p></a>
@@ -38,7 +62,7 @@ const Profile = () => {
         <div className=" flex justify-center">
         <div className=" w-[500px]  px-6 bg-gray-200 lg:mt-0 md:mt-0 mt-5">
           <div className="">
-            <h1 className="text-2xl font-bold "> hridoy</h1>
+            <h1 className="text-2xl font-bold ">{user?.displayName} </h1>
             <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
               <div className="modal-box">
                 <div className=" px-4 py-3 rounded-md ">
@@ -51,13 +75,14 @@ const Profile = () => {
                       </form>
                     </div>
                   </div>
-                  <form >
+                  <form onSubmit={handleSubmit(onSubmit)} >
                     <div className="mt-4 xl:grid-cols-2 lg:grid-cols-2 grid-cols-2  grid text-center items-center justify-center gap-10 ">
                       <div className="form-control">
                         <label className="label">
                           <span className="label-text">Name</span>
                         </label>
                         <input
+                         {...register("name")}
                           type="text"
                           name="name"
                           placeholder="Name"
@@ -71,28 +96,30 @@ const Profile = () => {
                           <span className="label-text">Photo</span>
                         </label>
                         <input
+                         {...register("photoURL")}
                           name="photo"
-                          type="file"
+                          type="text"
                           placeholder="Photo"
                           className="file-input file-input-bordered file-input-primary w-full"
                         />
                       </div>
-                      <div className="form-control">
+                      {/* <div className="form-control">
                         <label className="label">
                           <span className="label-text">Number</span>
                         </label>
                         <input
+                         {...register("phone")}
                           name="phone"
                           type="text"
                           className="input items-center py-2 input-bordered"
                         />
-                      </div>
-                      <div className="form-control">
+                      </div> */}
+                      {/* <div className="form-control">
                         <label className="label">
                           <span className="label-text">Description</span>
                         </label>
-                        <textarea className="textarea textarea-bordered" name="description" placeholder="Bio"></textarea>
-                      </div>
+                        <textarea  {...register("discription")} className="textarea textarea-bordered" name="description" placeholder="Bio"></textarea>
+                      </div> */}
                     </div>
 
                     <button

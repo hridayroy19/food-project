@@ -6,6 +6,8 @@ import Offer from "../component/pages/Offer";
 import Signup from "../component/pages/SignUp";
 import Login from "../component/pages/Login";
 import Profile from "../component/userComponet/Profile";
+import PrivetRoute from "../component/provider/PrivetRoute";
+import CartPage from "../component/pages/CartPage";
 
 
 const Router = createBrowserRouter([
@@ -18,11 +20,15 @@ const Router = createBrowserRouter([
       },
       {
         path:"/menu",
-        element:<Menu/>
+        element:<PrivetRoute><Menu/></PrivetRoute>
       },
       {
         path:"/offer",
         element:<Offer/>
+      },
+      {
+        path:"/cartpage",
+        element:<CartPage/>
       },
       {
         path:'/signup',

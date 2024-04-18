@@ -16,7 +16,7 @@ const SignUp = () => {
     const password = from.password.value
    
     const userInfo ={
-      name,
+       name,
        email,
        password
 
