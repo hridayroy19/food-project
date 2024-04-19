@@ -13,21 +13,21 @@ const Navbar = () => {
   };
   const [isSticky, setSticky] = useState(false);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const offset = window.scrollY;
-  //     if (offset > 0) {
-  //       setSticky(true);
-  //     } else {
-  //       setSticky(false);
-  //     }
-  //   };
-  //   window.addEventListener("scroll", handleScroll);
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 0) {
+        setSticky(true);
+      } else {
+        setSticky(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
 
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const navItems = (
     <>
@@ -110,12 +110,8 @@ const Navbar = () => {
               {navItems}
             </ul>
           </div>
-          <a href="/">
-            <img
-              src="https://i.ibb.co/02JZx8y/green-leaf-food-hand-written-word-text-vector-23793802-removebg-preview.png"
-              alt=""
-              className="w-[70px] "
-            />
+          <a className="text-green text-xl font-mono" href="/">
+          <p className="font-bold">SavorCraft Foods</p>
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
