@@ -93,6 +93,14 @@ const handelDelet = (item)=>{
           </table>
         </div>
       </div>
+{/* customer delets */}
+<div className="my-12">
+<div className="md:w-1/2 space-y-3">
+  <h3> customer detalis</h3>
+</div>
+</div>
+
+
     </div>
   );
 };
