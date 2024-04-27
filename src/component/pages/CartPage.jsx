@@ -10,32 +10,32 @@ const CartPage = () => {
   // console.log(cart);
   const [cartItem, setCartItem] = useState();
 
-  // const handelDecrease = (item) => {
-  //   fetch(`http://localhost:6001/addCart/${item._id}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       "Content-type": "application/json; charset=UTF-8",
-  //     },
-  //     body: JSON.stringify({ quantity: item.quantity - 1 }),
-  //   })
-  //     .then((res) => {
-  //       res.json();
-  //     })
-  //     .then((data) => {
-  //       const updataCart = cartItem.map((cartItem) => {
-  //         if (cartItem.id === item.id) {
-  //           return {
-  //             ...cartItem,
-  //             quantity: cartItem.quantity - 1,
-  //           };
-  //         }
-  //         return cartItem;
-  //       });
-  //       refetch();
-  //       setCartItem(updataCart);
-  //     });
-  //   refetch();
-  // };
+  const handelDecrease = (item) => {
+    fetch(`http://localhost:6001/addCart/${item._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify({ quantity: item.quantity - 1 }),
+    })
+      .then((res) => {
+        res.json();
+      })
+      .then((data) => {
+        const updataCart = cartItem.map((cartItem) => {
+          if (cartItem.id === item.id) {
+            return {
+              ...cartItem,
+              quantity: cartItem.quantity - 1,
+            };
+          }
+          return cartItem;
+        });
+        refetch();
+        setCartItem(updataCart);
+      });
+    refetch();
+  };
 
   const handelInrease = (item) => {
     fetch(`http://localhost:6001/addCart/${item._id}`, {
