@@ -10,6 +10,17 @@ const CartPage = () => {
   // console.log(cart);
   const [cartItem, setCartItem] = useState();
 
+  // calculaterPrice in queantity
+  const calculatePrice = (item) => {
+    return item.price * item.quantity;
+  };
+
+  // all total price
+  const allTotalPrice = cart.reduce((total, item)=>{
+   return total + calculatePrice(item)
+  },0)
+
+  // shopin cart item decrease
   const handelDecrease = (item) => {
     fetch(`http://localhost:6001/addCart/${item._id}`, {
       method: "PUT",
@@ -37,6 +48,7 @@ const CartPage = () => {
     refetch();
   };
 
+  // shoping cart item increase
   const handelInrease = (item) => {
     fetch(`http://localhost:6001/addCart/${item._id}`, {
       method: "PUT",
@@ -64,6 +76,7 @@ const CartPage = () => {
     refetch();
   };
 
+  // shoping cart item delete
   const handelDelet = (item) => {
     Swal.fire({
       title: "Are you sure?",
@@ -138,10 +151,10 @@ const CartPage = () => {
                       onClick={() => handelDecrease(item)}
                       className="btn btn-xs"
                     >
-                   
                       -
                     </button>
                     <input
+                      onChange={() => console.log(item.name)}
                       type="number"
                       value={item?.quantity}
                       className="w-10 mx-2 text-center overflow-hidden appearance-none"
@@ -150,11 +163,10 @@ const CartPage = () => {
                       onClick={() => handelInrease(item)}
                       className="btn btn-xs"
                     >
-                    
                       +
                     </button>
                   </td>
-                  <th>{item.price}</th>
+                  <th>${calculatePrice(item).toFixed(2)}</th>
                   <th>
                     <button
                       onClick={() => handelDelet(item)}
@@ -180,7 +192,7 @@ const CartPage = () => {
         <div className="md:w-1/2 font-semibold space-y-3">
           <h3 className="font-medium text-lg"> Shopping detalis</h3>
           <p> Total Item : {cart?.length} </p>
-          <p> Total Price : $42 </p>
+          <p> Total Price : ${allTotalPrice} </p>
           <button className="btn btn-primary"> proceed Checkout </button>
         </div>
       </div>
