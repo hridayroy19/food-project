@@ -11,6 +11,9 @@ import CartPage from "../component/pages/CartPage";
 import DashboardLayout from "../layout/DashboardLayout";
 import Dashboard from "../component/pages/dashboard/adminDashboard/Dashboard";
 import User from "../component/pages/dashboard/adminDashboard/User";
+import AddMenu from "../component/pages/dashboard/adminDashboard/AddMenu";
+import Managebooking from "../component/pages/dashboard/adminDashboard/Managebooking";
+import ManageItem from "../component/pages/dashboard/adminDashboard/ManageItem";
 
 
 const Router = createBrowserRouter([
@@ -61,6 +64,18 @@ const Router = createBrowserRouter([
         {
           path:"alluser",
           element:<User/>
+        },
+        {
+          path:"addMenu",
+          element:<AddMenu/>
+        },
+        {
+          path:"managebooking",
+          element:<Managebooking/>
+        },      
+        {
+          path:"manageItem",
+          element:<ManageItem/>
         }
        ]
 
