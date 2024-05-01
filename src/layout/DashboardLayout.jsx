@@ -7,7 +7,7 @@ import { Link, Outlet } from "react-router-dom";
 const DashboardLayout = () => {
   return (
     <div>
-      <div className="drawer sm:drawer-open">
+      <div className="drawer md:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col sm:items-start sm:justify-start my-2">
           {/* Page content here */}
@@ -15,11 +15,11 @@ const DashboardLayout = () => {
           <div className=" flex items-center justify-between mx-4 mt-3">
             <label
               htmlFor="my-drawer-2"
-              className="btn btn-primary drawer-button lg:hidden"
+              className="btn btn-primary drawer-button md:hidden"
             >
               <MdDashboardCustomize />
             </label>
-            <button className="btn flex justify-center sm:hidden btn-primary rounded-full px-4 ">
+            <button className="btn flex justify-center md:hidden btn-primary rounded-full px-4 ">
               <TiUser className="text-xl" />
               logout
             </button>
