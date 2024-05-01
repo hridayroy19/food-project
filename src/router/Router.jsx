@@ -8,6 +8,9 @@ import Login from "../component/pages/Login";
 import Profile from "../component/userComponet/Profile";
 import PrivetRoute from "../component/provider/PrivetRoute";
 import CartPage from "../component/pages/CartPage";
+import DashboardLayout from "../layout/DashboardLayout";
+import Dashboard from "../component/pages/dashboard/adminDashboard/Dashboard";
+import User from "../component/pages/dashboard/adminDashboard/User";
 
 
 const Router = createBrowserRouter([
@@ -46,8 +49,21 @@ const Router = createBrowserRouter([
     
     ]
     },
+    // Admin dashbaord
     {
-    
+       path:'dashboard',
+       element:<DashboardLayout/>,
+       children:[
+        {
+          path:'',
+          element:<Dashboard/>
+        },
+        {
+          path:"alluser",
+          element:<User/>
+        }
+       ]
+
     }
   ]);
   export default Router
