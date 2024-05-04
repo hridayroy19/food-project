@@ -40,11 +40,9 @@ const logOut =()=>{
 
 // Inside AuthProvider component
 const updateProfileData = ({ name, photoURL }) => {
-    const currentUser = auth.currentUser;
-    return updateProfile(currentUser, {
-        displayName: name,
-        photoURL: photoURL
-    });
+    return updateProfile(auth.currentUser,{
+        displayName:name , photoURL:photoURL
+    })
 }
 
 

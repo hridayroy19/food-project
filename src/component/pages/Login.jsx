@@ -4,11 +4,12 @@ import { FaFacebook } from "react-icons/fa";
 import { Authcontext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 const Login = () => {
 
 const { sigIn , signInWithgoogle, }=useContext(Authcontext)
 
-const loaction = useLocation();
+// const loaction = useLocation();
 const navigate = useNavigate();
 const trans = location.state?.trans?.pathname || "/";
 
@@ -35,17 +36,39 @@ const trans = location.state?.trans?.pathname || "/";
 
 //  google login
 
-const handelGoogleSignWith=()=>{
-    signInWithgoogle()
-    .then(res=>{
-      console.log(res)
+// const handelGoogleSignWith=()=>{
+//     signInWithgoogle()
+//     .then(res=>{
+//       console.log(res)
+//       const userInfo ={
+//         name: res.name,
+//           email: res.email ,
+//           photoURL:res.photoURL        
+//       }
   
-    })
-    .catch(error=>{
-      console.erro(error)
+//     })
+//     .catch(error=>{
+//       console.erro(error)
     
-    })
-}
+//     })
+// }
+
+
+const handelGoogleSignWith = () => {
+    signInWithgoogle().then((res) => {
+      console.log(res.user);
+      const userInfo = {
+        name : res.user?.displayName,
+        email: res.user?.email,
+        role: "user",
+      };
+      axios.post('http://localhost:6001/user', userInfo)
+      .then(res =>{
+        console.log(res.data)
+        navigate("/");
+      })
+    });
+  };
 
 
 

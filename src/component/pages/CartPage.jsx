@@ -7,7 +7,7 @@ import { Authcontext } from "../provider/AuthProvider";
 const CartPage = () => {
   const [cart, refetch] = UseCart();
   const { user } = useContext(Authcontext);
-  // console.log(cart);
+  console.log(cart);
   const [cartItem, setCartItem] = useState();
 
   // calculaterPrice in queantity
