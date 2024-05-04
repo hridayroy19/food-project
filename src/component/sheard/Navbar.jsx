@@ -196,6 +196,11 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
+                  <a> <Link to={"/dashboard"}>                
+                  Dashboard
+                  </Link></a>
+                </li>
+                <li>
                   <a>Settings</a>
                 </li>
                 <li>

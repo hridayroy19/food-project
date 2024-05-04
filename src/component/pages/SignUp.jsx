@@ -29,7 +29,6 @@ const SignUp = () => {
     return toast.success('Successfully toasted!')
 
     })
-    
     .catch(error =>{
       console.log(error);
       return toast.error("all ready use please try again ")
