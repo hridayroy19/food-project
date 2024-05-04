@@ -14,12 +14,14 @@ import User from "../component/pages/dashboard/adminDashboard/User";
 import AddMenu from "../component/pages/dashboard/adminDashboard/AddMenu";
 import Managebooking from "../component/pages/dashboard/adminDashboard/Managebooking";
 import ManageItem from "../component/pages/dashboard/adminDashboard/ManageItem";
+import ErrorPage from "../component/pages/ErrorPage";
 
 
 const Router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout/>,
+      errorElement:<ErrorPage/>,
       children:[{
        path:"",
        element:<Home></Home>,
