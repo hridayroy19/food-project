@@ -3,37 +3,41 @@ import { FaUtensils } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { UsePhoto } from "../../../sheard/imageHosting.js";
 import useAxiosPublic from "../../../hooks/useAxiosPublic.jsx";
-
+import Swal from "sweetalert2";
 
 const AddMenu = () => {
-
-const axiosPublic =  useAxiosPublic()
-  const { register, handleSubmit } = useForm();
-
+  const axiosPublic = useAxiosPublic();
+  const { register, handleSubmit,reset } = useForm();
 
   const onSubmit = async (data) => {
-   if (data.image && data.image[0]) {
-        const imgHost = data.image[0]; // Accessing the first file from the input
-        const hostimage = await UsePhoto(imgHost);
-        // console.log(hostimage);
-        const menuItems = {
-            name:data.name,
-            catagory:data.catagory,
-            price:data.price,
-            recipe:data.recipe,
-            image:hostimage 
-          }
-        // console.log(menuItems);
+    if (data.image && data.image[0]) {
+      const imgHost = data.image[0]; // Accessing the first file from the input
+      const hostimage = await UsePhoto(imgHost);
+      // console.log(hostimage);
+      const menuItems = {
+        name: data.name,
+        catagory: data.catagory,
+        price: data.price,
+        recipe: data.recipe,
+        image: hostimage,
+      };
+      // console.log(menuItems);
 
-axiosPublic.post('/menu',menuItems)
-.then(res =>{
-  console.log(res.data)
-})
-
+      axiosPublic.post("/menu", menuItems).then((res) => {
+        // console.log(res.data)
+        if (res.data.insertedId) {
+          reset()
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Menu Items saved Database",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+    }
   };
-
-
-}
 
   return (
     <div className=" w-full md:w-[870px] px-4 mx-auto">
@@ -62,9 +66,11 @@ axiosPublic.post('/menu',menuItems)
               <span className="label-text">Catagory*</span>
             </div>
             <select
-             {...register("catagory", { required: true })}
-            className="select select-bordered" defaultValue="default">
-              <option  disabled value="default" >
+              {...register("catagory", { required: true })}
+              className="select select-bordered"
+              defaultValue="default"
+            >
+              <option disabled value="default">
                 Select a Catagory
               </option>
               <option value={"salad"}>Salad</option>
@@ -88,7 +94,6 @@ axiosPublic.post('/menu',menuItems)
           </label>
         </div>
         <div className="form-control my-5">
-          
           <textarea
             className="textarea textarea-bordered w-[50%] h-24"
             placeholder="Bio"
@@ -97,12 +102,12 @@ axiosPublic.post('/menu',menuItems)
           {/* row image uplode */}
         </div>
         <div className=" my-5">
-            <input
-              type="file"
-              {...register("image", { required: true })}
-              className="file-input text-black w-full max-w-xs"
-            />
-          </div>
+          <input
+            type="file"
+            {...register("image", { required: true })}
+            className="file-input text-black w-full max-w-xs"
+          />
+        </div>
         <button type="submit" className="btn bg-green">
           {" "}
           Submite <FaUtensils />{" "}
