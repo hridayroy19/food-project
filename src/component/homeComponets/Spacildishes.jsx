@@ -2,18 +2,21 @@
 import React, { useEffect, useState } from "react";
 import { FaAngleRight, FaAngleLeft  } from "react-icons/fa6";
 import Cards from "./Cards";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 
 const SpecialDishes = () => {
   const [recipes, setRecipes] = useState([]);
+  const axiosPublic = useAxiosPublic()
 
   useEffect(() => {
-    fetch("http://localhost:6001/menu")
-      .then((res) => res.json())
-      .then((data) => {
-        const specials = data.filter((item) => item.category === "popular");
-        // console.log(specials)
+    axiosPublic.get("/menu")
+      .then((res) => {
+        const specials = res.data.filter((item) => item.category === "popular");
         setRecipes(specials);
+      })
+      .catch((error) => {
+        console.error("Error fetching menu:", error);
       });
   }, []);
 

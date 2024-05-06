@@ -1,10 +1,39 @@
 import React from "react";
 import { FaUtensils } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import { UsePhoto } from "../../../sheard/imageHosting.js";
+import useAxiosPublic from "../../../hooks/useAxiosPublic.jsx";
+
 
 const AddMenu = () => {
+
+const axiosPublic =  useAxiosPublic()
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+
+  const onSubmit = async (data) => {
+   if (data.image && data.image[0]) {
+        const imgHost = data.image[0]; // Accessing the first file from the input
+        const hostimage = await UsePhoto(imgHost);
+        // console.log(hostimage);
+        const menuItems = {
+            name:data.name,
+            catagory:data.catagory,
+            price:data.price,
+            recipe:data.recipe,
+            image:hostimage 
+          }
+        // console.log(menuItems);
+
+axiosPublic.post('/menu',menuItems)
+.then(res =>{
+  console.log(res.data)
+})
+
+  };
+
+
+}
 
   return (
     <div className=" w-full md:w-[870px] px-4 mx-auto">

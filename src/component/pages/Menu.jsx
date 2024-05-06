@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Cards from "../homeComponets/Cards";
 import { FaFilter } from "react-icons/fa";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Menu = () => {
   const [menu, setMenu] = useState([]);
@@ -9,15 +10,17 @@ const Menu = () => {
   const [sortOption, setSortOption] = useState("default");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(8); // Number of items to display per page
+  const axiosPublic = useAxiosPublic()
+  
 
   useEffect(() => {
     // Fetch data from the backend
     const fetchData = async () => {
       try {
-        const response = await fetch("/menu.json");
-        const data = await response.json();
+        const response = await axiosPublic.get("/menu"); 
+        const data = response.data; 
         setMenu(data);
-        setFilteredItems(data); // Initially, display all items
+        setFilteredItems(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
