@@ -7,6 +7,7 @@ import useAdmin from "../component/hooks/useAdmin";
 import { useContext } from "react";
 import { Authcontext } from "../component/provider/AuthProvider";
 import SignUp from "../component/pages/SignUp";
+import Loading from "../component/sheard/Loading";
 
 const DashboardLayout = () => {
   const {  loading }= useContext(Authcontext)
@@ -17,7 +18,8 @@ const DashboardLayout = () => {
     <div>
 
       {
-        isAdmine ? <div className="drawer md:drawer-open">
+        isadmineLoading? (<div><Loading/> </div>)
+       : isAdmine ? (<div className="drawer md:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col sm:items-start sm:justify-start my-2">
           {/* Page content here */}
@@ -92,7 +94,7 @@ const DashboardLayout = () => {
             {/* <li><Link to={'dashboard/alluser'} >Manage Items</Link ></li>      */}
           </ul>
         </div>
-      </div> : (<SignUp/>)
+      </div> ): (<SignUp/>)
       }
       
     </div>

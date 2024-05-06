@@ -13,7 +13,7 @@ const Loading = () => {
 
     return (
         <div className=" items-center flex justify-center h-screen">
-        <Lottie options={defaultOptions} width={400} height={300} />
+        <Lottie options={defaultOptions} width={200} height={200} />
         </div>
     );
 };

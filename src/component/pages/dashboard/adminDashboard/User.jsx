@@ -3,9 +3,11 @@ import React from "react";
 import { AiTwotoneDelete } from "react-icons/ai";
 import { LuUserCircle2 } from "react-icons/lu";
 import useAxiosPrivet from "../../../hooks/useAxiosPrivet";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const User = () => {
-const axiosPrivate = useAxiosPrivet()
+const axiosPrivate = useAxiosPrivet();
+const axioPublic = useAxiosPublic()
 
 // all user get api
   const { refetch, data: users = [] } = useQuery({
@@ -27,9 +29,9 @@ const axiosPrivate = useAxiosPrivet()
 
   // user delet api 
  const deletuser = user =>{
-  axiosPrivate.delete(`/users/${user._id}`).then((res)=>{
+  axioPublic.delete(`/users/${user._id}`).then((res)=>{
     alert(`$(user.name) is remove from database`);
-    refetch()
+    refetch();
   })
  }
 
@@ -37,7 +39,7 @@ const axiosPrivate = useAxiosPrivet()
   return (
     <div className=" xl:ml-7 ml-4">
       <div className="flex  text-xl   items-center justify-between m-4">
-        <h1 className=" "> All Users</h1>
+        <h1 > All Users</h1>
         <h1> Total Users:{users.length}</h1>
       </div>
       {/* tabil crate  */}
