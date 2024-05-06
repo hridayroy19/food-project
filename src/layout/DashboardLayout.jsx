@@ -12,7 +12,7 @@ import Loading from "../component/sheard/Loading";
 const DashboardLayout = () => {
   const {  loading }= useContext(Authcontext)
   const [isAdmine , isadmineLoading] = useAdmin()
-  console.log(isAdmine);
+  // console.log(isAdmine);
 
   return (
     <div>
