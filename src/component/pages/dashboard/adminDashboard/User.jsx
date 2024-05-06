@@ -6,6 +6,7 @@ import useAxiosPrivet from "../../../hooks/useAxiosPrivet";
 
 const User = () => {
 const axiosPrivate = useAxiosPrivet()
+
 // all user get api
   const { refetch, data: users = [] } = useQuery({
     queryKey: ["users"],
@@ -16,7 +17,7 @@ const axiosPrivate = useAxiosPrivet()
   });
 
   // console.log(users);
-
+// user make admine patch api
   const makeAdime = user =>{
     axiosPrivate.patch(`/users/admin/${user._id}`).then((res)=>{
       alert(`$(user.name) is  a admine`)
@@ -24,6 +25,7 @@ const axiosPrivate = useAxiosPrivet()
     })
   }
 
+  // user delet api 
  const deletuser = user =>{
   axiosPrivate.delete(`/users/${user._id}`).then((res)=>{
     alert(`$(user.name) is remove from database`);

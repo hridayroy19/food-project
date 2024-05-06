@@ -1,21 +1,24 @@
+
 import { useContext } from "react";
 import { Authcontext } from "../provider/AuthProvider";
+import { useQuery } from "@tanstack/react-query";
 import useAxiosPrivet from "./useAxiosPrivet";
 
+
 const useAdmin = () => {
-    const { user} = useContext(Authcontext);
-    const axiosPrivate = useAxiosPrivet();
-
-    const { refetch, data:isAdmine, isPanding:isadmineLoading} = useQuery({
-        queryKey: [user?.email,'isAdmin'],
+    const { user, loading } = useContext(Authcontext);
+    const axiosSecure = useAxiosPrivet()
+    const { data: isAdmin, isPending: isAdminLoading } = useQuery({
+        queryKey: [user?.email, 'isAdmin'],
+        enabled: !loading,
         queryFn: async () => {
-          const response = await axiosPrivate(`users/admine/${user?.email}`);
-          console.log(response.data);
-          return response.data.admin;
-        },
-      });
-
-    return [isAdmine , isadmineLoading]
+            console.log('checking is admin', user)
+            const res = await axiosSecure.get(`/users/admin/${user?.email}`);
+            // console.log(res.data);
+            return res.data?.admin;
+        }
+    })
+    return [isAdmin, isAdminLoading]
 };
 
 export default useAdmin;

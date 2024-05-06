@@ -3,11 +3,21 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import { MdDashboard, MdDashboardCustomize } from "react-icons/md";
 import { TiEdit, TiUser } from "react-icons/ti";
 import { Link, Outlet } from "react-router-dom";
+import useAdmin from "../component/hooks/useAdmin";
+import { useContext } from "react";
+import { Authcontext } from "../component/provider/AuthProvider";
+import SignUp from "../component/pages/SignUp";
 
 const DashboardLayout = () => {
+  const {  loading }= useContext(Authcontext)
+  const [isAdmine , isadmineLoading] = useAdmin()
+  console.log(isAdmine);
+
   return (
     <div>
-      <div className="drawer md:drawer-open">
+
+      {
+        isAdmine ? <div className="drawer md:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col sm:items-start sm:justify-start my-2">
           {/* Page content here */}
@@ -82,7 +92,9 @@ const DashboardLayout = () => {
             {/* <li><Link to={'dashboard/alluser'} >Manage Items</Link ></li>      */}
           </ul>
         </div>
-      </div>
+      </div> : (<SignUp/>)
+      }
+      
     </div>
   );
 };
