@@ -2,15 +2,51 @@ import React from "react";
 import useMenu from "../../../hooks/useMenu";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
+// import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
+import useAxiosPrivet from "../../../hooks/useAxiosPrivet";
 
 const ManageItem = () => {
+
+    const axioPublic = useAxiosPrivet()
   const [menu, loading, refetch] = useMenu();
-  console.log(menu);
+
+   const deletMenuItes = item => {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            axioPublic.delete(`/menu/${item._id}`)
+                .then(res => {
+                  // console.log(res.data);
+                    if (res.data.deletedCount > 0) {
+                        refetch();
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                    }
+                })
+        }
+    });
+}
+
+
+
+
+
+
 
   return (
     <div className=" w-full md:w-[870px] px-4 mx-auto">
       <h1 className="text-xl">
-        {" "}
         Management All <span className="text-green">Items Menu</span>
       </h1>
       <div className=" mt-10">
@@ -36,25 +72,23 @@ const ManageItem = () => {
                     <div className="flex items-center gap-3">
                       <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
-                          <img src={menu.image} alt="img" />
+                          <img src={item?.image} alt="img" />
                         </div>
                       </div>
                       <div>
-                        <div className="font-bold">{item.name}</div>
+                        <div className="font-bold"> {item?.name}</div>
                       </div>
                     </div>
                   </td>
-                  <td>{menu?.price}</td>
+                  <td> {item?.price}</td>
                   <td>
-                    {" "}
-                    <button className="  border px-5 rounded-full p-1 hover:bg-red  text-xl">
+                    <button onClick={()=> deletMenuItes(item)} className=" border px-5 rounded-full p-1 hover:bg-red  text-xl">
                       <MdDelete />
-                    </button>{" "}
+                    </button>
                   </td>
                   <th>
                     <button className=" hover:bg-green border px-5 rounded-full p-1 text-xl ">
-                      {" "}
-                      <FaEdit />{" "}
+                      <FaEdit />
                     </button>
                   </th>
                 </tr>
