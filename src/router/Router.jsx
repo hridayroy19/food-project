@@ -15,6 +15,7 @@ import AddMenu from "../component/pages/dashboard/adminDashboard/AddMenu";
 import Managebooking from "../component/pages/dashboard/adminDashboard/Managebooking";
 import ManageItem from "../component/pages/dashboard/adminDashboard/ManageItem";
 import ErrorPage from "../component/pages/ErrorPage";
+import UpdateMenuItems from "../component/pages/dashboard/adminDashboard/UpdateMenuItems";
 
 
 const Router = createBrowserRouter([
@@ -78,6 +79,11 @@ const Router = createBrowserRouter([
         {
           path:"manageItem",
           element:<ManageItem/>
+        },
+        {
+          path:"updateMenuItems/:id",
+          element:<UpdateMenuItems/>,
+          loader:({params})=>fetch(`http://localhost:6001/menu/${params.id}`)
         }
        ]
 
