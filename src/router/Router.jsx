@@ -16,6 +16,8 @@ import Managebooking from "../component/pages/dashboard/adminDashboard/Manageboo
 import ManageItem from "../component/pages/dashboard/adminDashboard/ManageItem";
 import ErrorPage from "../component/pages/ErrorPage";
 import UpdateMenuItems from "../component/pages/dashboard/adminDashboard/UpdateMenuItems";
+// import CheckoutForm from "../component/pages/paymentMenu/CheckoutForm";
+import Payment from "../component/pages/paymentMenu/Payment";
 
 
 const Router = createBrowserRouter([
@@ -38,6 +40,10 @@ const Router = createBrowserRouter([
       {
         path:"/cartpage",
         element:<CartPage/>
+      },
+      {
+        path:"/proceedChekout",
+        element:<Payment/>
       },
       {
         path:'/signup',

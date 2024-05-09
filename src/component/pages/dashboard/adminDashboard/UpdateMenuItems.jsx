@@ -111,7 +111,7 @@ const UpdateMenuItems = () => {
         <div className=" my-5">
           <input
             type="file"
-            {...register("image", { required: true })}
+            {...register("image", )}
             className="file-input text-black w-full max-w-xs"
           />
         </div>

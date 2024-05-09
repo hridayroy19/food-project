@@ -3,6 +3,7 @@ import UseCart from "../hooks/UseCart";
 import { MdDelete } from "react-icons/md";
 import { useContext, useState } from "react";
 import { Authcontext } from "../provider/AuthProvider";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
   const [cart, refetch] = UseCart();
@@ -193,7 +194,9 @@ const CartPage = () => {
           <h3 className="font-medium text-lg"> Shopping detalis</h3>
           <p> Total Item : {cart?.length} </p>
           <p> Total Price : ${allTotalPrice} </p>
-          <button className="btn btn-primary"> proceed Checkout </button>
+        <Link to={"/proceedChekout"}>
+        <button className="btn btn-primary"> proceed Checkout </button>
+        </Link>
         </div>
       </div>
     </div>
