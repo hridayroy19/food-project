@@ -34,26 +34,7 @@ const trans = location.state?.trans?.pathname || "/";
 
  }
 
-//  google login
-
-// const handelGoogleSignWith=()=>{
-//     signInWithgoogle()
-//     .then(res=>{
-//       console.log(res)
-//       const userInfo ={
-//         name: res.name,
-//           email: res.email ,
-//           photoURL:res.photoURL        
-//       }
-  
-//     })
-//     .catch(error=>{
-//       console.erro(error)
-    
-//     })
-// }
-
-
+// google login 
 const handelGoogleSignWith = () => {
     signInWithgoogle().then((res) => {
       console.log(res.user);
