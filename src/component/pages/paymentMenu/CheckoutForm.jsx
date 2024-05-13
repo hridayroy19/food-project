@@ -1,12 +1,35 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Authcontext } from "../../provider/AuthProvider";
+import useAxiosPrivet from "../../hooks/useAxiosPrivet";
 
 const CheckoutForm = ({ price, cart }) => {
   // console.log(cart);
   const stripe = useStripe();
   const elements = useElements();
+  const  {user} = useContext(Authcontext)
+  const axiosSecure = useAxiosPrivet()
 
   const [cartError, setCartError] = useState(null);
+  const [ clientSecret ,  setClientSecret ] = useState("")
+
+
+
+useEffect(()=>{
+  if(typeof price !== 'number' || price<1){
+    console.log("price is not a number or less then 1");
+    return;
+  }
+ axiosSecure.post('/create-payment', { price}).then((res)=>{
+  console.log(res.data.clientSecret);
+  setClientSecret(res.data.clientSecret);
+ })
+
+},[price,axiosSecure])
+
+
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -32,6 +55,22 @@ const CheckoutForm = ({ price, cart }) => {
     } else {
       console.log("[PaymentMethod]", paymentMethod);
     }
+
+    const {paymentIntent, error:confarmError} = await stripe.confirmCardPayment(
+      clientSecret,
+      {
+        payment_method: {
+          card: card, 
+          billing_details: {
+            name: user?.displayName || "anonymous",
+            email:user?.email || 'unknow'
+          },
+        },
+      },
+    );
+
+
+
   };
 
   return (
