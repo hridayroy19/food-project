@@ -20,7 +20,8 @@ useEffect(()=>{
     console.log("price is not a number or less then 1");
     return;
   }
- axiosSecure.post('/create-payment', { price}).then((res)=>{
+ axiosSecure.post('/create-payment', {price})
+ .then((res)=>{
   console.log(res.data.clientSecret);
   setClientSecret(res.data.clientSecret);
  })
@@ -55,23 +56,47 @@ useEffect(()=>{
     } else {
       console.log("[PaymentMethod]", paymentMethod);
     }
+  
 
-    const {paymentIntent, error:confarmError} = await stripe.confirmCardPayment(
+    // const {paymentIntent, error:confarmError} = await stripe.confirmCardPayment(
+    //   clientSecret,
+    //   {
+    //     payment_method: {
+    //       card: card, 
+    //       billing_details: {
+    //         name: user?.displayName || "anonymous",
+    //         email:user?.email || 'unknow'
+    //       },
+    //     },
+    //   },
+    // );
+    // if(confarmError){
+    //   console.log(confarmError);
+    // }
+
+
+    const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
       clientSecret,
       {
         payment_method: {
-          card: card, 
+          card: card,
           billing_details: {
             name: user?.displayName || "anonymous",
-            email:user?.email || 'unknow'
+            email: user?.email || "unknown",
           },
         },
-      },
+      }
     );
 
+    if (confirmError) {
+      console.error("Error confirming card payment:", confirmError);
+      setCartError(confirmError);
+      return;
+    }
+    console.log("PaymentIntent confirmed:", paymentIntent);
+  }
 
-
-  };
+  
 
   return (
     <div className="max-w-screen-2xl font-mono my-20 container mx-auto xl:px-36 px-4 ">
