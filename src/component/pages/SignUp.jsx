@@ -7,7 +7,7 @@ import { loadSlim } from "tsparticles-slim";
 import Particles from "react-tsparticles";
 
 const SignUp = () => {
-  // animition
+  // animition file setup
   const particlesInit = useCallback(async (engine) => {
     // console.log(engine);
     await loadSlim(engine);
