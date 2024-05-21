@@ -103,7 +103,7 @@ const CheckoutForm = ({ price, cart }) => {
           no-repeat
         `
       });
-      navigate("/");
+      navigate("/order");
       console.log("payment saving in database", res.data);
     }
   };

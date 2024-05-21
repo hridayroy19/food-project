@@ -201,6 +201,12 @@ const Navbar = () => {
                   </Link></a>
                 </li>
                 <li>
+                  <a> <Link to={"/order"}>                
+                  Order
+                  </Link></a>
+                </li>
+               
+                <li>
                   <a>Settings</a>
                 </li>
                 <li>

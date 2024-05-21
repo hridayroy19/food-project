@@ -40,11 +40,11 @@ const OrderPage = () => {
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
-            <thead className=" bg-green text-black">
+            <thead className=" bg-green text-xl text-black">
               <tr>
                 <th>#</th>
                 <th>Order Date</th>
-                <th> transiteationId</th>
+                <th> TransiteationId</th>
                 <th>Price </th>
                 <th>Status</th>
                 <th>Action</th>

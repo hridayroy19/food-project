@@ -1,6 +1,6 @@
 import { FaBagShopping, FaUsers } from "react-icons/fa6";
 import { IoMdAddCircleOutline } from "react-icons/io";
-import { MdDashboard, MdDashboardCustomize } from "react-icons/md";
+import { MdDashboard, MdDashboardCustomize, MdHome } from "react-icons/md";
 import { TiEdit, TiUser } from "react-icons/ti";
 import { Link, Outlet } from "react-router-dom";
 import useAdmin from "../component/hooks/useAdmin";
@@ -89,6 +89,14 @@ const DashboardLayout = () => {
               <Link to={"/dashboard/manageItem"}>
                 {" "}
                 <TiEdit /> Manage Items
+              </Link>
+            </li>
+            
+            <li className=" mt-16">
+            <hr />
+              <Link to={"/"}>
+                {" "}
+                <MdHome /> Home
               </Link>
             </li>
             {/* <li><Link to={'dashboard/alluser'} >Manage Items</Link ></li>      */}
