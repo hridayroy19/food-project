@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
-import { FaAngleRight, FaAngleLeft  } from "react-icons/fa6";
 import Cards from "./Cards";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 

@@ -36,7 +36,7 @@ const Navbar = () => {
   const navItems = (
     <>
       <li>
-        <a href="/" className="text-green">
+        <a href="/" className="text-orange-500 ">
           Home
         </a>
       </li>
@@ -114,8 +114,9 @@ const Navbar = () => {
               {navItems}
             </ul>
           </div>
-          <a className="text-green text-xl font-mono" href="/">
-          <p className="font-bold">SavorCraft Foods</p>
+          <a  className="text-orange-500 font-bold text-xl flex flex-row-reverse items-center font-mono" href="/">
+          <p className="font-bold"> <span className="text-black">Flavor</span> Foods</p>
+          <img  src="https://i.ibb.co/yQGXDnS/d791df8772bb48c765f076aaab5cfdc2-removebg-preview.png" className="w-28" alt="" /> 
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -220,7 +221,7 @@ const Navbar = () => {
                 onClick={() =>
                   document.getElementById("my_modal_5").showModal()
                 }
-                className="bg-green px-6 py-2 rounded-full"
+                className="bg-orange-500  px-6 py-2 rounded-full"
               >
                 Login
               </button>

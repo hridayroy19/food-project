@@ -112,7 +112,7 @@ const CartPage = () => {
       <div className="py-32 flex flex-col items-center justify-center">
         {/* content */}
         <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug">
-          For the Love of Delicious <span className="text-green">Food</span>
+          For the Love of Delicious <span className="text-orange-500 ">Food</span>
         </h2>
       </div>
       {/* list card */}
@@ -120,7 +120,7 @@ const CartPage = () => {
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
-            <thead className=" bg-green text-xl text-black">
+            <thead className=" bg-orange-500  text-xl text-black">
               <tr>
                 <th>#</th>
                 <th>food</th>
@@ -195,7 +195,7 @@ const CartPage = () => {
           <p> Total Item : {cart?.length} </p>
           <p> Total Price : ${allTotalPrice} </p>
         <Link to={"/proceedChekout"}>
-        <button className="btn mt-4 btm-nav-xs bg-green"> proceed Checkout </button>
+        <button className="btn mt-4 btm-nav-xs bg-orange-500" > proceed Checkout </button>
         </Link>
         </div>
       </div>

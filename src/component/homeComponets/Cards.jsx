@@ -78,7 +78,7 @@ const Cards = ({ item }) => {
           </h5>
           <button
             onClick={() => handelAddCart()}
-            className=" border-2 p-2 rounded-full bg-green hover:bg-black text-white"
+            className=" border-2 p-2 rounded-full bg-orange-500  hover:bg-black text-white"
           >
             Add to Cart{" "}
           </button>
