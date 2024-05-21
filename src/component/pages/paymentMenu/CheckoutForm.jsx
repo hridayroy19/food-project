@@ -4,36 +4,29 @@ import { Authcontext } from "../../provider/AuthProvider";
 import useAxiosPrivet from "../../hooks/useAxiosPrivet";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useNavigate } from "react-router-dom";
-
+import Swal from "sweetalert2";
 
 const CheckoutForm = ({ price, cart }) => {
   // console.log(cart);
   const stripe = useStripe();
   const elements = useElements();
-  const  {user} = useContext(Authcontext)
-  const axiosSecure = useAxiosPrivet()
-  const axiospublic = useAxiosPublic()
-const navigate = useNavigate()
+  const { user } = useContext(Authcontext);
+  const axiosSecure = useAxiosPrivet();
+  const axiospublic = useAxiosPublic();
+  const navigate = useNavigate();
   const [cartError, setCartError] = useState(null);
-  const [ clientSecret ,  setClientSecret ] = useState("")
+  const [clientSecret, setClientSecret] = useState("");
 
-
-
-useEffect(()=>{
-  if(typeof price !== 'number' || price<1){
-    console.log("price is not a number or less then 1");
-    return;
-  }
- axiosSecure.post('/create-payment', {price})
- .then((res)=>{
-  console.log(res.data.clientSecret);
-  setClientSecret(res.data.clientSecret);
- })
-
-},[price,axiosSecure])
-
-
-
+  useEffect(() => {
+    if (typeof price !== "number" || price < 1) {
+      console.log("price is not a number or less then 1");
+      return;
+    }
+    axiosSecure.post("/create-payment", { price }).then((res) => {
+      console.log(res.data.clientSecret);
+      setClientSecret(res.data.clientSecret);
+    });
+  }, [price, axiosSecure]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -60,10 +53,9 @@ useEffect(()=>{
     } else {
       console.log("[PaymentMethod]", paymentMethod);
     }
-  
-    const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
-      clientSecret,
-      {
+
+    const { paymentIntent, error: confirmError } =
+      await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: card,
           billing_details: {
@@ -71,8 +63,7 @@ useEffect(()=>{
             email: user?.email || "unknown",
           },
         },
-      }
-    );
+      });
 
     if (confirmError) {
       console.error("Error confirming card payment:", confirmError);
@@ -81,34 +72,41 @@ useEffect(()=>{
     }
     console.log("PaymentIntent confirmed:", paymentIntent);
 
- if(paymentIntent.status === "succeeded"){
-  console.log(paymentIntent.id);
-  setCartError(`yout transctionId is ${paymentIntent.id} `)
+    if (paymentIntent.status === "succeeded") {
+      console.log(paymentIntent.id);
+      setCartError(`yout transctionId is ${paymentIntent.id} `);
 
-// paypment info data 
+      // paypment info data
 
- const paymentInfo = {
-    
-     email: user?.email,
-     transitionId:paymentIntent.id,
-     price,
-     quantity:cart?.length,
-     status:"order panding",
-     itemName:cart?.map((item)=>item.name),
-     cartItem:cart?.map((item)=>item._id),
-     menuItem:cart?.map((item)=>item.menuItem),
-
- }
- console.log(paymentInfo);
- const res = await axiospublic.post('/payments', paymentInfo);
-                navigate('/')
-                console.log('payment saving in database', res.data);
-
- }
-
-  }
-
-  
+      const paymentInfo = {
+        email: user?.email,
+        transitionId: paymentIntent.id,
+        price,
+        quantity: cart?.length,
+        status: "order panding",
+        itemName: cart?.map((item) => item.name),
+        cartItem: cart?.map((item) => item._id),
+        menuItem: cart?.map((item) => item.menuItem),
+      };
+      console.log(paymentInfo);
+      const res = await axiospublic.post("/payments", paymentInfo);
+      Swal.fire({
+        title: "successfull payment",
+        width: 500,
+        padding: "3em",
+        color: "#716add",
+        background: "#fff url(https://i.ibb.co/hX4LWdV/green-leaf-food-hand-written-word-text-vector-23793802.jpg)",
+        backdrop: `
+          rgba(0,0,123,0.4)
+          url("/images/nyan-cat.gif")
+          right top
+          no-repeat
+        `
+      });
+      navigate("/");
+      console.log("payment saving in database", res.data);
+    }
+  };
 
   return (
     <div className="max-w-screen-2xl font-mono my-20 container mx-auto xl:px-36 px-4 ">

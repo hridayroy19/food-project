@@ -18,6 +18,7 @@ import ErrorPage from "../component/pages/ErrorPage";
 import UpdateMenuItems from "../component/pages/dashboard/adminDashboard/UpdateMenuItems";
 // import CheckoutForm from "../component/pages/paymentMenu/CheckoutForm";
 import Payment from "../component/pages/paymentMenu/Payment";
+import OrderPage from "../component/pages/paymentMenu/OrderPage";
 
 
 const Router = createBrowserRouter([
@@ -55,10 +56,11 @@ const Router = createBrowserRouter([
       ,{
         path:"/profile",
         element:<Profile></Profile>
+      },
+      {
+        path:'/order',
+        element:<OrderPage/>
       }
-
-    
-    
     ]
     },
     // Admin dashbaord
