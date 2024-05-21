@@ -1,187 +1,85 @@
-import { useContext, useEffect, useState } from "react";
-import { FaEdit, FaTwitter } from "react-icons/fa";
+// import { useContext, useEffect, useState } from "react";
+import {  FaInstagramSquare, FaTwitter } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa";
-import { MdOutlineMailOutline } from "react-icons/md";
-import { MdOutlineLocalPhone } from "react-icons/md";
-import { IoCloseSharp } from "react-icons/io5";
+import { useContext } from "react";
 import { Authcontext } from "../provider/AuthProvider";
-import { useForm } from "react-hook-form"
-import toast from "react-hot-toast";
-import axios from "axios";
+// import { MdOutlineMailOutline } from "react-icons/md";
+// import { MdOutlineLocalPhone } from "react-icons/md";
+// import { IoCloseSharp } from "react-icons/io5";
+// import useAxiosPublic from "../hooks/useAxiosPublic";
+
 
 const Profile = () => {
-  const { user, updateProfileData } = useContext(Authcontext)
-  // console.log(user?.photoURL);
-  // const [users, setUsers] = useState([]);
-  // console.log(users);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm()
+  const { user } = useContext(Authcontext);
+  console.log(user);
 
-const onSubmit = (data) => {
-    const name = data.name;
-    const photoURL = data.photoURL;
-    updateProfileData({ name, photoURL })
-        .then(() => {
-          toast.success("Profile updated successfully!");
-
-        })
-        .catch((error) => {   
-            console.log(error);
-        });
-}
-  
+  // const [user, setuser] = useState([]);
+  // // console.log(user);
+  // const axiosPublic = useAxiosPublic()
 
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       if (user?.email) {
+  //         const response = await axiosPublic.get(`/profile?email=${user.email}`);
+  //         console.log(response.data);
+  //         setuser(response.data);
+  //       }
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   };
 
-
-// useEffect(() => {
-//   const fetchData = async () => {
-//     try {
-//       const response = await axios.get(`http://localhost:6001/user${user?.email}`);
-//       // console.log(response.data);
-//       setUsers(response.data);
-//     } catch (error) {
-//       console.error('Error fetching data:', error);
-//     }
-//   }
-
-//   fetchData();
-// }, []);
-
-
-
-
-
-
+  //   fetchData();
+  // }, [user?.email]);
 
   return (
     <>
       {/* stactic card section  */}
 
-     <div className="py-16 ">
-     <div className="flex py-8 justify-center items-center">
-        <h1 className=" lg:text-3xl text-xl my-5 lg:ml-8 ml-4  md:ml-7 font-semibold"> Personal Information: </h1>
-        <button className="btn bg-[#f3f03fdc] border-none  md:[12rem] lg:mr-8 mr-[2rem]  ml-[6rem] " onClick={() => document.getElementById('my_modal_5').showModal()}><span><FaEdit className="text-xl" /></span>Info</button>
+      <div className="py-16 ">
+        <div className="flex py-5 justify-center items-center">
+          <h1 className=" lg:text-3xl text-xl my-5 lg:ml-8 ml-4 md:ml-7 font-semibold">
+            Personal Information
+          </h1>  
+        </div>
+
+<div className=" flex justify-center items-center  ">
+  <div className="card xl:w-[400px] border-2 lg:w-[320px] md:w-[400px] w-[380px] font-poppins   shadow-lg">
+    {/* imgaes */}
+    <div className="avatar ">
+      <div className="w-32 mt-10 mx-auto rounded-full">
+        <img src={user?.photoURL} />
       </div>
-
-
-      {/* start */}
-      <div className="lg:flex  xl:flex md:flex flex-row cursor-pointer gap-5  mb-5 px-7  justify-center ">
-
-        <div className=" w-[300px]  relative ">
-          <img src={users?.photoURL} alt="" className="w-full  h-[370px] object-cover   " />
-
-          <div className="xl:bottom-[150px] lg:bottom-[170px] absolute md:bottom-[150px] bottom-[170px]  ml-8 text-xl  ">
-            <a href="https://www.facebook.com"><p className="mt-4 mb-3  bg-yellow-300 hover:bg-yellow-600 p-1 py-2 "> <FaFacebook className="rounded-full  "></FaFacebook> </p></a>
-            <a href="https://www.linkedin.com/"><p className="mt-4 mb-3 bg-yellow-300 hover:bg-yellow-600  p-1 py-2 "><FaLinkedinIn></FaLinkedinIn></p></a>
-            <a href="https://twitter.com/"><p className="mt-4 mb-3 bg-yellow-300 hover:bg-yellow-600  p-1 py-2 ">
-              <FaTwitter></FaTwitter>
-            </p></a>
-          </div>
-        </div>
-
-
-        <div className=" flex justify-center">
-        <div className=" w-[500px]  px-6 bg-gray-200 lg:mt-0 md:mt-0 mt-5">
-          <div className="">
-            <h1 className="text-2xl font-bold ">{users?.displayName} </h1>
-            <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-              <div className="modal-box">
-                <div className=" px-4 py-3 rounded-md ">
-                  <div className="flex justify-between items-center">
-                    <h1 className="text-2xl font-semibold"> Update Information </h1>
-                    <div className="modal-action">
-                      <form method="dialog">
-                        {/* if there is a button in form, it will close the modal */}
-                        <button className="text-2xl "><IoCloseSharp /></button>
-                      </form>
-                    </div>
-                  </div>
-                  <form onSubmit={handleSubmit(onSubmit)} >
-                    <div className="mt-4 xl:grid-cols-2 lg:grid-cols-2 grid-cols-2  grid text-center items-center justify-center gap-10 ">
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">Name</span>
-                        </label>
-                        <input
-                         {...register("name")}
-                          type="text"
-                          name="name"
-                          placeholder="Name"
-                          className="input input-bordered"
-                          required
-                        />
-                      </div>
-
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">Photo</span>
-                        </label>
-                        <input
-                         {...register("photoURL")}
-                          name="photo"
-                          type="text"
-                          placeholder="Photo"
-                          className="file-input file-input-bordered file-input-primary w-full"
-                        />
-                      </div>
-                      {/* <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">Number</span>
-                        </label>
-                        <input
-                         {...register("phone")}
-                          name="phone"
-                          type="text"
-                          className="input items-center py-2 input-bordered"
-                        />
-                      </div> */}
-                      {/* <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">Description</span>
-                        </label>
-                        <textarea  {...register("discription")} className="textarea textarea-bordered" name="description" placeholder="Bio"></textarea>
-                      </div> */}
-                    </div>
-
-                    <button
-                      type="submit"
-                      className=" mt-4 font-semibold px-2 hover:bg-yellow-500   rounded-lg bg-yellow-400 w-[180px] h-12 mb-6 "
-                    >
-                      Update Information
-                    </button>
-                  </form>
-                </div>
-
-              </div>
-            </dialog>
-          </div>
-
-          <p className=" mt-3 uppercase font-medium"> agent </p>
-
-          <p className="text-[20px] font-semibold mt-5"> .description</p>
-
-          <h1 className=" text-2xl  font-bold my-5 "> Contact Information</h1>
-
-          <div className="xl:flex lg:flex flex-row gap-7 md:flex-row mt-2">
-            <div className=" flex xl:flex-row flex-col  gap-4">
-              <p className=" flex items-center gap-3"> < MdOutlineMailOutline></MdOutlineMailOutline> .email </p>
-              <p className=" flex gap-1 items-center"> <MdOutlineLocalPhone></MdOutlineLocalPhone>entphone</p>
-            </div>
-
-          </div>
-
-        </div>
+    </div>
+    <div className="card-body items-center text">
+      <h2 className="card-title capitalize ">{user?.displayName}</h2>
+      <p className="text-[17px] ">{user?.email} </p>
+      <p> {user?.description} </p>
+      <div>
+        <p className="capitalize text-center text-[15px] mt-5">
+         
+          get contact
+        </p>
+        <div className=" flex gap-5 text-2xl  mt-5 mb-4">
+          <FaFacebook className="hover:text-green"></FaFacebook>{" "}
+          <FaLinkedinIn className="hover:text-green"></FaLinkedinIn>{" "}
+          <FaTwitter className="hover:text-green"></FaTwitter>{" "}
+          <FaInstagramSquare className="hover:text-green"></FaInstagramSquare>
         </div>
       </div>
-     </div>
+    </div>
+  </div>
+</div> 
+
+
+      
+
+      </div>
     </>
   );
-
 };
 
 export default Profile;
