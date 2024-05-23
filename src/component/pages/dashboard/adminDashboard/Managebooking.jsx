@@ -5,6 +5,7 @@ import { GiConfirmed } from "react-icons/gi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Swal from "sweetalert2";
 import useAxiosPrivet from "../../../hooks/useAxiosPrivet";
+import { Await } from "react-router-dom";
 
 const Managebooking = () => {
   const axiosPublic = useAxiosPublic();
@@ -16,22 +17,52 @@ const Managebooking = () => {
       return res.data;
     },
   });
-  console.log(orders);
+//   console.log(orders);
 
   const handelConfirmed = async (item) => {
-    console.log(item);
+    // console.log(item);
     await axiosPrivet.patch(`/paypment/${item._id}`).then((res) => {
       console.log(res);
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Your work has been saved",
+        title: "Order confirmed successfully",
         showConfirmButton: false,
         timer: 1500,
       });
       refetch();
     });
   };
+  
+//   order deleted
+
+//  const handelDelete = async (item)=>{
+//     await axiosPrivet.delete(`/payment/delete/${item._id}`)
+//     .then(res =>{
+//         console.log(res);
+//         if (res.deletedCount > 0) {
+//         Swal.fire({
+//             position: "top-end",
+//             icon: "success",
+//             title: "Success full Delete",
+//             showConfirmButton: false,
+//             timer: 1500,
+//           })};
+//     })
+//  }
+
+const handelDelete  = async (item) =>{
+    await axiosPrivet.delete(`/payment/delete/${item._id}`).then((res)=>{
+      alert(`$(user.name) is remove from database`);
+      refetch();
+    })
+   }
+
+
+
+
+
+
 
   return (
     <div className=" w-full md:w-[870px] px-4 mx-auto">
@@ -65,7 +96,7 @@ const Managebooking = () => {
                   <td> {item?.transitionId}</td>
                   <td>{item.price}</td>
                   <th>{item.status}</th>
-                  <th>
+                  <th className="text-center font-mono text-[17px] text-orange-500 ">
                     {item.status === "confirmed" ? (
                       "Done"
                     ) : (
@@ -78,7 +109,7 @@ const Managebooking = () => {
                     )}
                   </th>
                   <th>
-                    <button className=" btn btn-xl  bg-red">
+                    <button onClick={()=>handelDelete(item._id)}  className=" btn btn-xl  bg-red">
                       <RiDeleteBin6Line />
                     </button>
                   </th>
