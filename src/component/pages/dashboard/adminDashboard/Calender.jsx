@@ -1,21 +1,21 @@
 
-// import React from "react";
-// import 'react-calendar/dist/Calendar.css';
-// import { useState } from "react";
-// import Calendar from "react-calendar";
+import React from "react";
+import 'react-calendar/dist/Calendar.css';
+import { useState } from "react";
+import Calendar from "react-calendar";
 
-// const Calender = () => {
-//   const [value, setValue] = useState(new Date());
-//   const onChange = (value) => {
-//     setValue(value);
-//   };
-//   return (
-//     <div>
-//       <div>
-//         <Calendar onChange={onChange} value={value} />
-//       </div>
-//     </div>
-//   );
-// };
+const Calender = () => {
+  const [value, setValue] = useState(new Date());
+  const onChange = (value) => {
+    setValue(value);
+  };
+  return (
+    <div>
+      <div>
+        <Calendar onChange={onChange} value={value} />
+      </div>
+    </div>
+  );
+};
 
-// export default Calender;
+export default Calender; 
