@@ -6,7 +6,7 @@ const DashboardNavbar = () => {
     const { user } = useContext(Authcontext);
     return (
         <div>
-            <div className="navbar shadow-md rounded-2xl mb-5 bg-gray-200">
+            <div className="navbar mb-5 ">
   <div className="flex-1">
   <label className="  border flex items-center gap-2">
   <input type="text" className=" border-none rounded-full px-3 py-1"  placeholder="Search" />
