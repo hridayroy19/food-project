@@ -1,9 +1,6 @@
-import { useContext } from "react";
-import { Authcontext } from "../../../provider/AuthProvider";
 
 
 const DashboardNavbar = () => {
-    const { user } = useContext(Authcontext);
     return (
         <div>
             <div className="navbar mb-5 ">
