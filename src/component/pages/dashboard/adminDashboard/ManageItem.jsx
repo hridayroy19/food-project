@@ -56,7 +56,7 @@ const ManageItem = () => {
               </tr>
             </thead>
             <tbody>
-              {/* row 1 */}
+              {/* row 1 dymanice maping  */}
 
               {menu?.map((item, index) => (
                 <tr key={index} className="border-2 ">
