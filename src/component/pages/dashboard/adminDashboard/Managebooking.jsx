@@ -67,7 +67,7 @@ const handelDelete  = async (item) =>{
   return (
     <div className=" w-full md:w-[870px] px-4 mx-auto">
       <h1 className="text-xl">
-        Management All <span className="text-green">Items Menu</span>
+        Management All <span className="text-orange-500">Items Menu</span>
       </h1>
       <div className=" mt-10">
         <div className="overflow-x-auto">
