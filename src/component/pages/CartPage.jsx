@@ -120,7 +120,7 @@ const CartPage = () => {
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
-            <thead className=" bg-orange-500  text-xl text-black">
+            <thead className=" bg-orange-400  text-xl text-black">
               <tr>
                 <th>#</th>
                 <th>food</th>
@@ -195,7 +195,7 @@ const CartPage = () => {
           <p> Total Item : {cart?.length} </p>
           <p> Total Price : ${allTotalPrice} </p>
         <Link to={"/proceedChekout"}>
-        <button className="btn mt-4 btm-nav-xs bg-orange-500" > proceed Checkout </button>
+        <button className="btn mt-4 btm-nav-xs bg-orange-400 hover:bg-orange-500" > proceed Checkout </button>
         </Link>
         </div>
       </div>

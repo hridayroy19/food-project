@@ -108,7 +108,7 @@ const AddMenu = () => {
             className="file-input text-black w-full max-w-xs"
           />
         </div>
-        <button type="submit" className="btn bg-green">
+        <button type="submit" className="btn bg-orange-400 hover:bg-orange-600">
           {" "}
           Submite <FaUtensils />{" "}
         </button>

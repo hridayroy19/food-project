@@ -47,8 +47,8 @@ const axioPublic = useAxiosPublic()
         <div className="overflow-x-auto">
           <table className="table  xl:w-[800px] lg:w-[600px] md:w-[400px] mx-auto table-zebra cursor-pointer">
             {/* head */}
-            <thead className=" bg-green text-xl p-2 px-2 rounded-md  text-black ">
-              <tr>
+            <thead className=" bg-orange-400 text-xl p-2 px-2 rounded-md  text-black ">
+              <tr className="border-4">
                 <th># </th>
                 <th>Name</th>
                 <th>Email</th>
@@ -56,7 +56,7 @@ const axioPublic = useAxiosPublic()
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody className=" bg-slate-300">
+            <tbody className=" ">
               {/* row 1 */}
 
               {users?.map((user, index) => (
