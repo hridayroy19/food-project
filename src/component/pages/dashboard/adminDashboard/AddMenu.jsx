@@ -99,7 +99,7 @@ const AddMenu = () => {
             placeholder="Bio"
             {...register("recipe", { required: true })}
           ></textarea>
-          {/* row image uplode */}
+          {/* row image uplode a*/}
         </div>
         <div className=" my-5">
           <input
