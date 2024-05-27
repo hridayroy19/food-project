@@ -40,13 +40,13 @@ const ManageItem = () => {
   return (
     <div className=" w-full md:w-[870px] px-4 mx-auto">
       <h1 className="text-xl">
-        Management All <span className="text-green">Items Menu</span>
+        Management All <span className="text-orange-500">Items Menu</span>
       </h1>
       <div className=" mt-10">
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
-            <thead className="bg-gray-400 text-black lg:text-xl">
+            <thead className="bg-orange-500 text-black lg:text-xl">
               <tr>
                 <th>No</th>
                 <th>Name</th>

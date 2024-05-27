@@ -26,7 +26,7 @@ const DashboardLayout = () => {
           <div className="drawer-content flex flex-col sm:items-start sm:justify-start my-2">
             {/* Page content here */}
 
-            <div className=" flex items-center justify-between mx-4 mt-3">
+            <div className=" flex items-center justify-between mx-2 mt-3">
               <label
                 htmlFor="my-drawer-2"
                 className="btn btn-primary drawer-button md:hidden"
@@ -39,7 +39,7 @@ const DashboardLayout = () => {
               </button>
             </div>
 
-            <div className=" mt-5 md:mt-2 mx-4">
+            <div className=" mt-5 md:mt-2 ">
               <Outlet />
             </div>
           </div>
@@ -49,7 +49,7 @@ const DashboardLayout = () => {
               aria-label="close sidebar"
               className="drawer-overlay"
             ></label>
-            <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+            <ul className="menu p-4 w-52 min-h-full bg-base-200 text-base-content">
               {/* Sidebar content here */}
               <li>
                 <Link className="flex justify-start gap-10" to={"/dashboard"}>
