@@ -101,12 +101,13 @@
 import { BsCashCoin } from "react-icons/bs";
 import { FaRegTimesCircle } from "react-icons/fa";
 import { GrDeliver, GrLocation } from "react-icons/gr";
+import Review from "../MenuCarts/Review";
 
 const MenuDeltes = () => {
   return (
     <div className="max-w-screen-2xl ontainer mx-auto xl:px-24 px-4 bg-gray-100">
-      <div className="flex flex-col lg:flex-row items-start gap-5 mt-5 justify-between">
-        <div className="lg:w-[670px] xl:w-[870px] border-2 border-b-green w-full">
+      <div className="flex flex-col lg:flex-row items-start gap-5  justify-between">
+        <div className="lg:w-[670px] xl:w-[870px] border-2  w-full">
           <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
               <div className="lg:w-[260px] xl:w-[470px] w-full lg:h-[300px] xl:h-[400px] border">
@@ -117,9 +118,7 @@ const MenuDeltes = () => {
               </div>
               <div className="lg:w-[330px] w-full mt-5 lg:mt-0 lg:ml-5">
                 <h1 className="text-xl font-bold">
-                  No Girls Half Sleeve Chinese Microfiber Printed T-Shirts for
-                  boy's Girl's man woman- Trendy and Comfortable Casual Wear
-                  Ends in
+                  No Girls Half Sleeve
                 </h1>
                 <p>reating</p>
                 <p>Brand : No Brand | More Foods From No Brand</p>
@@ -172,7 +171,7 @@ const MenuDeltes = () => {
           </div>
         </div>
         {/* Second div */}
-        <div className="border-2 px-3  md:w-full py-24 lg:mt-0  bg-gray-100">
+        <div className="2 px-3  md:w-full py-24 lg:mt-0  bg-gray-100">
           <h1>Delivery</h1>
           <p className="flex gap-3 mt-2 items-center">
             <GrLocation className="text-xl" />
@@ -196,6 +195,11 @@ const MenuDeltes = () => {
             </p>
           </div>
         </div>
+      </div>
+      {/* review page */}
+      <div className="mb-5 mt-5">
+        <p>Ratings & Reviews</p>
+      <Review/>
       </div>
     </div>
   );
