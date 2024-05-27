@@ -19,6 +19,7 @@ import UpdateMenuItems from "../component/pages/dashboard/adminDashboard/UpdateM
 // import CheckoutForm from "../component/pages/paymentMenu/CheckoutForm";
 import Payment from "../component/pages/paymentMenu/Payment";
 import OrderPage from "../component/pages/paymentMenu/OrderPage";
+import MenuDeltes from "../component/pages/MenuDeltes";
 
 
 const Router = createBrowserRouter([
@@ -60,6 +61,10 @@ const Router = createBrowserRouter([
       {
         path:'/order',
         element:<OrderPage/>
+      },
+      {
+        path:'/menuDelets',
+        element:<MenuDeltes/>
       }
     ]
     },
