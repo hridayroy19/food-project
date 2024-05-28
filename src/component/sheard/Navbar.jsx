@@ -9,7 +9,7 @@ const Navbar = () => {
   const { user, logOut } = useContext(Authcontext);
   // console.log(user?.email);
 
-  const [ cart , refetch] = UseCart();
+  const [cart, refetch] = UseCart();
   // console.log(cart);
 
   const handelSignout = () => {
@@ -35,47 +35,47 @@ const Navbar = () => {
 
   const navItems = (
     <>
-      <li>
-        <a href="/" className="text-orange-500 ">
-          Home
-        </a>
-      </li>
-      <li tabIndex={0}>
-        <details>
-          <summary>Menu</summary>
-          <ul className="p-2">
-            <li>
-              <a href="/menu">All</a>
-            </li>
-            <li>
-              <a>Salad</a>
-            </li>
-            <li>
-              <a>Pizza</a>
-            </li>
-          </ul>
-        </details>
-      </li>
-      <li tabIndex={0}>
-        <details>
-          <summary>Services</summary>
-          <ul className="p-2">
-            <li>
-              <a>Online Order</a>
-            </li>
-            <li>
-              <a>Table Booking</a>
-            </li>
-            <li>
-              <a>Order Tracking</a>
-            </li>
-          </ul>
-        </details>
-      </li>
-      <li>
-        <a href="/offer">Offers</a>
-      </li>
-    </>
+  <li>
+    <Link to="/" className="text-orange-500">
+      Home
+    </Link>
+  </li>
+  <li tabIndex={0}>
+    <details>
+      <summary>Menu</summary>
+      <ul className="p-2">
+        <li>
+          <Link to="/menu">All</Link>
+        </li>
+        <li>
+          <Link to="/menu/salad">Salad</Link>
+        </li>
+        <li>
+          <Link to="/menu/pizza">Pizza</Link>
+        </li>
+      </ul>
+    </details>
+  </li>
+  <li tabIndex={0}>
+    <details>
+      <summary>Services</summary>
+      <ul className="p-2">
+        <li>
+          <Link to="/services/online-order">Online Order</Link>
+        </li>
+        <li>
+          <Link to="/services/table-booking">Table Booking</Link>
+        </li>
+        <li>
+          <Link to="/services/order-tracking">Order Tracking</Link>
+        </li>
+      </ul>
+    </details>
+  </li>
+  <li>
+    <Link to="/offer">Offers</Link>
+  </li>
+</>
   );
 
   return (
@@ -114,9 +114,19 @@ const Navbar = () => {
               {navItems}
             </ul>
           </div>
-          <a  className="text-orange-500 font-bold text-xl flex flex-row-reverse items-center font-mono" href="/">
-          <p className="font-bold"> <span className="text-black">Flavor</span> Foods</p>
-          <img  src="https://i.ibb.co/yQGXDnS/d791df8772bb48c765f076aaab5cfdc2-removebg-preview.png" className="w-28" alt="" /> 
+          <a
+            className="text-orange-500 font-bold text-xl flex flex-row-reverse items-center font-mono"
+            href="/"
+          >
+            <p className="font-bold">
+              {" "}
+              <span className="text-black">Flavor</span> Foods
+            </p>
+            <img
+              src="https://i.ibb.co/yQGXDnS/d791df8772bb48c765f076aaab5cfdc2-removebg-preview.png"
+              className="w-28"
+              alt=""
+            />
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -160,7 +170,10 @@ const Navbar = () => {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span className="badge badge-sm indicator-item"> {cart?.length || 0} </span>
+                <span className="badge badge-sm indicator-item">
+                  {" "}
+                  {cart?.length || 0}{" "}
+                </span>
               </div>
             </label>
           </Link>
@@ -197,16 +210,18 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <a> <Link to={"/dashboard"}>                
-                  Dashboard
-                  </Link></a>
+                  <a>
+                    {" "}
+                    <Link to={"/dashboard"}>Dashboard</Link>
+                  </a>
                 </li>
                 <li>
-                  <a> <Link to={"/order"}>                
-                  Order
-                  </Link></a>
+                  <a>
+                    {" "}
+                    <Link to={"/order"}>Order</Link>
+                  </a>
                 </li>
-               
+
                 <li>
                   <a>Settings</a>
                 </li>
