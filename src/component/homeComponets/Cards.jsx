@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { FaHeart } from "react-icons/fa";
 import { Authcontext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 const Cards = ({ item }) => {
   // console.log(item);
 
@@ -62,6 +62,7 @@ const Cards = ({ item }) => {
 
   return (
     <div className="card lg:w-[280px] h-[360px] shadow-xl border-2 relative  mr-5 md:my-5">
+          <Link to={"/menuDelets"}> 
       <figure>
         <img
           src="https://i.ibb.co/VVb9hF0/classic-cheeseburger-with-beef-patty-pickles-cheese-tomato-onion-lettuce-and-ketchup-mustard-free-pn.webp"
@@ -69,18 +70,20 @@ const Cards = ({ item }) => {
           className="hover:scale-105  rounded-3xl px-2 transition-all duration-300 w-[90%] mt-4 object-cover  "
         />
       </figure>
+      </Link>
       <div className="card-body">
-        <h2 className="card-title">{item.name}!</h2>
+      <Link to={"/menuDelets"}>  <h2 className="card-title hover:underline">{item.name}!</h2> </Link>
         <p>Description of the item</p>
         <div className="card-actions justify-between items-center mt-2">
           <h5 className="font-semibold">
             <span className="text-sm text-red">$ </span> {item.price}
           </h5>
+          
           <button
             onClick={() => handelAddCart()}
             className=" border-2 p-2 rounded-full bg-orange-500  hover:bg-black text-white"
           >
-            Add to Cart{" "}
+            Add to Cart
           </button>
         </div>
       </div>

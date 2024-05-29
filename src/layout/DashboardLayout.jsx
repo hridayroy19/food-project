@@ -54,8 +54,8 @@ const DashboardLayout = () => {
               <li>
                 <Link className="flex justify-start gap-10" to={"/dashboard"}>
                   <img
-                    src="https://i.ibb.co/2v9bdVg/food-logo-food-point-background-vector-image-644408-2018.jpg"
-                    className="w-10"
+                    src="https://i.ibb.co/yQGXDnS/d791df8772bb48c765f076aaab5cfdc2-removebg-preview.png"
+                    className="w-10 "
                     alt=""
                   />
                   <span className="badge badge-secondary badge-outline">
