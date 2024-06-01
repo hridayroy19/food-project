@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../component/pages/Home";
 import MainLayout from "../layout/MainLayout";
 import Menu from "../component/pages/Menu";
-import Offer from "../component/pages/Offer";
 import Signup from "../component/pages/SignUp";
 import Login from "../component/pages/Login";
 import Profile from "../component/userComponet/Profile";
@@ -20,6 +19,7 @@ import UpdateMenuItems from "../component/pages/dashboard/adminDashboard/UpdateM
 import Payment from "../component/pages/paymentMenu/Payment";
 import OrderPage from "../component/pages/paymentMenu/OrderPage";
 import MenuDeltes from "../component/pages/MenuDeltes";
+import ImageGalery from "../component/pages/ImageGalery";
 
 
 const Router = createBrowserRouter([
@@ -37,7 +37,7 @@ const Router = createBrowserRouter([
       },
       {
         path:"/offer",
-        element:<Offer/>
+        element:<ImageGalery></ImageGalery>
       },
       {
         path:"/cartpage",
