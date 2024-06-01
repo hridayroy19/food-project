@@ -1,7 +1,9 @@
+import { set } from "firebase/database";
+import { useState } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 const ImageGallery = () => {
-  const images =[
+  const images = [
     "https://i.ibb.co/NFf23Vt/e1e470-20166758171c456cb8f49be7f04a57cc-mv2.jpg",
     "https://i.ibb.co/WyJbCRH/e1e470-c02ceaf0053e499d889fe7badaefb81f-mv2-d-1912-2880-s-2.jpg",
     "https://i.ibb.co/5nHHR8g/e1e470-689d645274654fb893174f1cb4ba31d1-mv2.jpg",
@@ -18,23 +20,54 @@ const ImageGallery = () => {
     "https://i.ibb.co/f9n6HZt/e1e470-165a2e9d9e5b41a3878ae3d61fe52b10-mv2.jpg",
     "https://i.ibb.co/8BC18zg/9fbf96-154e7082ae624f6186e6bccb6317dbbb-mv2-d-4000-2667-s-4-2.jpg",
     "https://i.ibb.co/d7Y1KNd/e1e470-b210837119904e9a88376b55d59889cf-mv2-d-1912-2880-s-2.jpg",
-    "https://i.ibb.co/wCYfL5S/e1e470-8ff01ed4c414484ab0be09684455fc28-mv2.jpg"
-  ]
+    "https://i.ibb.co/wCYfL5S/e1e470-8ff01ed4c414484ab0be09684455fc28-mv2.jpg",
+  ];
+
+  // show one image full view
+  const [data, setData] = useState({ img: "", i: 0 });
+  console.log(data);
+  const viewIagme = (img, i) => {
+    setData({ img, i });
+  };
 
   return (
     <div className="max-w-screen-2xl py-28 container mx-auto xl:px-24 px-4">
-      <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
-        <Masonry gutter="20px">
-          {images.map((image, i) => (
-            <img
-              src={image}
-              key={i}
-              alt={`Gallery image ${i + 1}`}
-              style={{ width: "100%", display: "block" }}
-            />
-          ))}
-        </Masonry>
-      </ResponsiveMasonry>
+      <h1 className=" text-2xl font-bold text-orange-600 text-center mt-4 mb-6">
+        {" "}
+        Our Food Gallery
+      </h1>
+      {/*     
+      {data.img && (
+        <div
+          style={{
+            width: "100%",
+            height: "100vh",
+            background: "balck",
+            position: "fixed",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            overflow:'hidden'
+          }}>
+         <img src={data.img} alt="" style={{width:"auto", maxWidth:"90%" ,maxHeight:'90%'  }} />
+        </div>
+      )} */}
+
+      <div>
+        <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+          <Masonry gutter="20px">
+            {images.map((image, i) => (
+              <img
+                src={image}
+                key={i}
+                alt={`Gallery image ${i + 1}`}
+                style={{ width: "100%", display: "block", cursor: "pointer" }}
+                onClick={() => viewIagme(image, i)}
+              />
+            ))}
+          </Masonry>
+        </ResponsiveMasonry>
+      </div>
     </div>
   );
 };

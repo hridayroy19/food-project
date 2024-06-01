@@ -68,7 +68,7 @@ const Navbar = () => {
         </details>
       </li>
       <li>
-        <Link to="/offer">Offers</Link>
+        <Link to="/offer"> Gallery </Link>
       </li>
     </>
   );
@@ -79,7 +79,9 @@ const Navbar = () => {
     >
       <div
         className={`navbar xl:px-24 ${
-          isSticky ? "shadow-md bg-base-100 transition-all duration-300 ease-in-out" : ""
+          isSticky
+            ? "shadow-md bg-base-100 transition-all duration-300 ease-in-out"
+            : ""
         }`}
       >
         <div className="navbar-start">
@@ -125,13 +127,10 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navItems}</ul>
         </div>
         <div className="navbar-end ">
-        <div className="drawer drawer-end">
+          <div className="drawer drawer-end">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
-              <label
-                htmlFor="my-drawer-4"
-                className=""
-              >
+              <label htmlFor="my-drawer-4" className="">
                 contact
               </label>
             </div>
@@ -142,36 +141,52 @@ const Navbar = () => {
                 className="drawer-overlay"
               ></label>
               <div className="menu text-center p-4 w-80 py-24 min-h-full bg-white font-mono  text-base-content">
-                <h1 className=" text-center text-2xl text-orange-600 mb-7
-                "> NEW HOURS </h1>
+                <h1
+                  className=" text-center text-2xl text-orange-600 mb-7
+                "
+                >
+                  {" "}
+                  NEW HOURS{" "}
+                </h1>
 
                 <div>
-                <h4 className="text-xl"> MONDAY - TUESDAY</h4>
-                <p className="font-bold mt-1">12:00PM to  10:00PM</p>
+                  <h4 className="text-xl"> MONDAY - TUESDAY</h4>
+                  <p className="font-bold mt-1">12:00PM to 10:00PM</p>
                 </div>
                 <div className=" mt-6">
-                <h4  className="text-xl">  WEDNESDAY - SUNDAY</h4>
-                <p className="font-bold mt-1">12:00PM to  10:00PM</p>
+                  <h4 className="text-xl"> WEDNESDAY - SUNDAY</h4>
+                  <p className="font-bold mt-1">12:00PM to 10:00PM</p>
                 </div>
                 <div className=" mt-6">
-                  <button className=" text-[24px] "> <MdCall /></button>
+                  <button className=" text-[24px] ">
+                    {" "}
+                    <MdCall />
+                  </button>
                   <p className="font-bold mb-1 "> Call Now</p>
                   <p> +088 01738211936</p>
                   <p>+088 01789019093</p>
                 </div>
                 {/* location */}
                 <div className=" mt-6">
-                  <button className=" text-[24px] "> <FaLocationDot /></button>
-                  <p className="text-orange-600 mb-1 text-xl"> Dicrections Hero</p>
+                  <button className=" text-[24px] ">
+                    {" "}
+                    <FaLocationDot />
+                  </button>
+                  <p className="text-orange-600 mb-1 text-xl">
+                    {" "}
+                    Dicrections Hero
+                  </p>
                   <p> Dinajpur pti Mor</p>
                 </div>
                 {/* email code */}
                 <div className=" mt-6">
-                  <button className=" text-[24px] "> <MdEmail /></button>
+                  <button className=" text-[24px] ">
+                    {" "}
+                    <MdEmail />
+                  </button>
                   <p className="text-orange-600  mb-1 text-xl"> Message Here</p>
                   <p className="text-[22px]"> hrhridoyroy503@gmail.com</p>
                 </div>
-             
               </div>
             </div>
           </div>
@@ -191,7 +206,7 @@ const Navbar = () => {
               />
             </svg>
           </button>
-          
+
           <Link to={"/cartPage"}>
             <label
               tabIndex={0}
@@ -253,10 +268,7 @@ const Navbar = () => {
               >
                 <div className="w-10 rounded-full">
                   {user.photoURL ? (
-                    <img
-                      alt="User avatar"
-                      src={user?.photoURL}
-                    />
+                    <img alt="User avatar" src={user?.photoURL} />
                   ) : (
                     <img
                       src="https://i.ibb.co/4Y2KSb9/istockphoto-1300845620-612x612.jpg"
@@ -297,7 +309,9 @@ const Navbar = () => {
               >
                 Login
               </button>
-              {showLoginModal && <Login onClose={() => setShowLoginModal(false)} />}
+              {showLoginModal && (
+                <Login onClose={() => setShowLoginModal(false)} />
+              )}
             </>
           )}
         </div>
