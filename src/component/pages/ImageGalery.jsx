@@ -1,4 +1,3 @@
-import { set } from "firebase/database";
 import { useState } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
@@ -25,7 +24,7 @@ const ImageGallery = () => {
 
   // show one image full view
   const [data, setData] = useState({ img: "", i: 0 });
-  console.log(data);
+  // console.log(data);
   const viewIagme = (img, i) => {
     setData({ img, i });
   };
@@ -33,7 +32,6 @@ const ImageGallery = () => {
   return (
     <div className="max-w-screen-2xl py-28 container mx-auto xl:px-24 px-4">
       <h1 className=" text-2xl font-bold text-orange-600 text-center mt-4 mb-6">
-        {" "}
         Our Food Gallery
       </h1>
       {/*     

@@ -61,11 +61,7 @@ const OrderPage = () => {
                   <td>{item.price}</td>
                   <th> {item.status} </th>
                   <th>
-      
-                    <button className="btn btn-ghost text-xl ">
-        
-                      cancel
-                    </button>{" "}
+                    <button className="btn btn-ghost text-xl ">cancel</button>{" "}
                   </th>
                 </tr>
               ))}
