@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { Authcontext } from "../provider/AuthProvider";
 
 const axiosPrivate = axios.create({
-  // baseURL: "http://localhost:6001",
   baseURL: "http://localhost:6001",
 });
 

@@ -12,7 +12,6 @@ const token = localStorage.getItem('access-token')
     queryKey: ["cart", user?.email],
     queryFn: async () => {
       const response = await fetch(
-        // `http://localhost:6001/addCart?email=${user?.email}`,{
         `http://localhost:6001/addCart?email=${user?.email}`,{
           headers:{
             authorization:`Bearer${token}`

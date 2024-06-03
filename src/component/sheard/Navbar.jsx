@@ -234,31 +234,6 @@ const Navbar = () => {
             </label>
           </Link>
 
-          {/* <div className="drawer drawer-end">
-            <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content">
-              <label
-                htmlFor="my-drawer-4"
-                className="drawer-button btn btn-primary"
-              >
-                Open drawer
-              </label>
-            </div>
-            <div className="drawer-side">
-              <label
-                htmlFor="my-drawer-4"
-                aria-label="close sidebar"
-                className="drawer-overlay"
-              ></label>
-              <ul className="menu p-4 w-80 py-24 min-h-full bg-base-200 text-base-content">
-                <li>
-                  <a>Sidebar Item 1 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio perferendis quos aliquam facilis. Nam perspiciatis rerum, odio veniam, pariatur ullam non corporis iste consequuntur odit a est velit officia culpa!</a>
-                </li>
-                <li><a>Sidebar Item 2</a></li>
-              </ul>
-            </div>
-          </div> */}
-
           {user ? (
             <div className="dropdown dropdown-end">
               <div

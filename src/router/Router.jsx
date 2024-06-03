@@ -5,7 +5,7 @@ import Menu from "../component/pages/Menu";
 import Signup from "../component/pages/SignUp";
 import Login from "../component/pages/Login";
 import Profile from "../component/userComponet/Profile";
-import PrivetRoute from "../component/provider/PrivetRoute";
+// import PrivetRoute from "../component/provider/PrivetRoute";
 import CartPage from "../component/pages/CartPage";
 import DashboardLayout from "../layout/DashboardLayout";
 import Dashboard from "../component/pages/dashboard/adminDashboard/Dashboard";
@@ -33,7 +33,7 @@ const Router = createBrowserRouter([
       },
       {
         path:"/menu",
-        element:<PrivetRoute><Menu/></PrivetRoute>
+        element:<Menu/>
       },
       {
         path:"/offer",
