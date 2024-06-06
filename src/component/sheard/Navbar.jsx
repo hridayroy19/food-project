@@ -282,11 +282,11 @@ const Navbar = () => {
                 onClick={() => setShowLoginModal(true)}
                 className="bg-orange-500 px-6 py-2 rounded-full"
               >
-                Login
+               <Link to={"/login"}>  login</Link>
               </button>
-              {showLoginModal && (
+              {/* {showLoginModal && (
                 <Login onClose={() => setShowLoginModal(false)} />
-              )}
+              )} */}
             </>
           )}
         </div>
