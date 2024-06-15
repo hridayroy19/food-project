@@ -1,6 +1,12 @@
 import { FaBagShopping, FaUsers } from "react-icons/fa6";
 import { IoMdAddCircleOutline, IoMdContacts } from "react-icons/io";
-import { MdDashboard, MdDashboardCustomize, MdHome, MdMenu, MdOutlineBorderColor } from "react-icons/md";
+import {
+  MdDashboard,
+  MdDashboardCustomize,
+  MdHome,
+  MdMenu,
+  MdOutlineBorderColor,
+} from "react-icons/md";
 import { TiEdit, TiUser } from "react-icons/ti";
 import { Link, Outlet } from "react-router-dom";
 import useAdmin from "../component/hooks/useAdmin";
@@ -10,7 +16,8 @@ import SignUp from "../component/pages/SignUp";
 import Loading from "../component/sheard/Loading";
 
 const DashboardLayout = () => {
-  const { loading } = useContext(Authcontext);
+  const { loading, user } = useContext(Authcontext);
+  console.log(user);
   const [isAdmine, isadmineLoading] = useAdmin();
   // console.log(isAdmine);
 
@@ -33,10 +40,14 @@ const DashboardLayout = () => {
               >
                 <MdDashboardCustomize />
               </label>
-              <button className="btn flex justify-center md:hidden btn-primary rounded-full px-4 ">
-                <TiUser className="text-xl" />
-                logout
-              </button>
+              <div className="flex justify-center md:hidden btn-primary rounded-full px-4 ">
+                
+                <div className="avatar online">
+                  <div className="w-14 rounded-full">
+                  <img src={user?.photoURL} alt="" className="w-9 object-cover" />
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className=" mt-5 md:mt-2 ">
@@ -98,17 +109,17 @@ const DashboardLayout = () => {
               </li>
               <li>
                 <Link to={"/menu"}>
-                <MdMenu /> Menu
+                  <MdMenu /> Menu
                 </Link>
               </li>
               <li>
                 <Link to={"/order-Tracking"}>
-                <MdOutlineBorderColor /> Order Tracking
+                  <MdOutlineBorderColor /> Order Tracking
                 </Link>
               </li>
               <li>
                 <Link to={"/order-Tracking"}>
-                <IoMdContacts /> Customer Support
+                  <IoMdContacts /> Customer Support
                 </Link>
               </li>
               {/* <li><Link to={'dashboard/alluser'} >Manage Items</Link ></li>      */}

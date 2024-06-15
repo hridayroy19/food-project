@@ -7,7 +7,7 @@ import ReviewFrom from "../MenuCarts/Review";
 
 const MenuDeltes = () => {
   return (
-    <div className="max-w-screen-2xl ontainer mx-auto xl:px-24 px-4 ">
+    <div className="max-w-screen-2xl ontainer bg-slate-100 mx-auto xl:px-24 px-4 ">
       <div className="flex flex-col lg:flex-row items-start gap-5  justify-between">
         <div className="lg:w-[670px] xl:w-[870px] border-2  w-full">
           <div className="hero min-h-screen bg-base-200">
@@ -103,7 +103,7 @@ const MenuDeltes = () => {
         <ReviewFrom />
         {/* <TotalReview /> */}
       </div>
-      <div className=" flex gap-4 mb-2">
+      <div className=" mb-9 mt-4 ">
         <Review></Review>
       </div>
     </div>

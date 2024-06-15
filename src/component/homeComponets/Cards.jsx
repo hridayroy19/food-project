@@ -61,7 +61,7 @@ const Cards = ({ item }) => {
   };
 
   return (
-    <div className="card lg:w-[280px] h-[360px] shadow-xl border-2 relative  mr-5 md:my-5">
+    <div className="card lg:w-[280px] lg:h-[360px] shadow-xl border-2 relative  mr-5 md:my-5">
           <Link to={"/menuDelets"}> 
       <figure>
         <img

@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import Star from "./Start";
 
 const Review = () => {
   const [reviews, setReviews] = useState([]);
@@ -23,10 +24,10 @@ const Review = () => {
   }, []);
 
   return (
-    <div className="mt-8 mb-7 md:mx-5">
+    <div className="mt-8 mb-7  md:mx-5">
       <h2 className="text-center font-semibold text-3xl">Latest User Review</h2>
       <Swiper
-        className="lg:max-w-7xl lg:mx-auto mt-8"
+        className="w-full mx-auto mt-8"
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={50}
         navigation
@@ -34,7 +35,7 @@ const Review = () => {
         scrollbar={{ draggable: true }}
         breakpoints={{
           1024: {
-            slidesPerView: 3,
+            slidesPerView: 4,
           },
           768: {
             slidesPerView: 2,
@@ -48,33 +49,27 @@ const Review = () => {
       >
         {reviews?.map((review) => (
           <SwiperSlide key={review?.id}>
-            <div className="w-[375px] mx-auto rounded-md md:w-[360px] h-[300px] lg:h-[350px] flex flex-col justify-between bg-[#FFFFFF] px-5 py-4 shadow-xl">
-              {/* icon and text  */}
-              <div className="pb-3">
+            <div className="w-[330px] lg:w-[240px]  mx-auto rounded-md md:w-[300px] h-auto lg:h-[250px] flex flex-col justify-between bg-[#FFFFFF] px-5 py-4 shadow-xl">
+              <div className="flex items-center mb-4">
+                <div>
+                  <img
+                    className="w-[60px] h-[60px] rounded-full"
+                    src="https://i.ibb.co/FnkqcTc/cute-boy-working-on-computer-cartoon-icon-illustration-people-technology-icon-concept-isolated-premi.jpg"
+                    alt=""
+                  />
+                </div>
+                <div className="pl-3">
+                  <h2 className="font-bold">{review?.name}</h2>
+                  <p>{review?.date}</p>
+                </div>
+              </div>
+
+              <div className="pb-3 mt-3 text-center">
                 <p className="text-justify">{review?.comment}</p>
               </div>
 
-              {/* star and data  */}
-              <div className=" h-[130px]">
-                <div className="py-2 ">
-                  <p> start</p>
-                </div>
-
-                <div className="border-b-2 mb-4"></div>
-
-                <div className="flex items-center">
-                  <div>
-                    <img
-                      className="w-[60px] h-[60px] rounded-full"
-                      src="https://i.ibb.co/FnkqcTc/cute-boy-working-on-computer-cartoon-icon-illustration-people-technology-icon-concept-isolated-premi.jpg"
-                      alt=""
-                    />
-                  </div>
-                  <div className="pl-3">
-                    <h2 className="font-bold">{review?.name}</h2>
-                    <p>{review?.date}</p>
-                  </div>
-                </div>
+              <div className="h-[130px] flex  justify-start mb-1">
+                <Star stars={review?.rating}></Star>
               </div>
             </div>
           </SwiperSlide>
