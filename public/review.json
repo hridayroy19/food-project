@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "comment": "This is a great product!",
+    "image": "https://example.com/user1.jpg",
+    "name": "User One",
+    "date": "2024-06-01"
+  },
+  {
+    "id": 2,
+    "comment": "I had a good experience with this service.",
+    "image": "https://example.com/user2.jpg",
+    "name": "User Two",
+    "date": "2024-06-02"
+  },
+  {
+    "id": 3,
+    "comment": "Could be better.",
+    "image": "https://example.com/user3.jpg",
+    "name": "User Three",
+    "date": "2024-06-03"
+  },
+  {
+    "id": 4,
+    "comment": "Could be better.",
+    "image": "https://example.com/user3.jpg",
+    "name": "User Three",
+    "date": "2024-06-03"
+  }
+]

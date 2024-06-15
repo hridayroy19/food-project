@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import Login from "../pages/Login";
 import { Authcontext } from "../provider/AuthProvider";
 import { Link } from "react-router-dom";
 import UseCart from "../hooks/UseCart";

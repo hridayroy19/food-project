@@ -1,6 +1,6 @@
 
 
-const Review = () => {
+const ReviewFrom = () => {
     return (
         <div className="max-w-md  mt-8 p-4 bg-gray-100 rounded-md shadow-md">
         <h2 className="text-xl font-semibold mb-4">Write a Review</h2>
@@ -43,4 +43,4 @@ const Review = () => {
     );
 };
 
-export default Review;
+export default ReviewFrom;

@@ -44,7 +44,7 @@ const Login = ({ onClose }) => {
         role: "user",
       };
       axios
-        .post("https://food-server-coral.vercel.app/user", userInfo)
+        .post("http://localhost:6001/user", userInfo)
         .then((res) => {
           console.log(res.data);
           navigate("/");

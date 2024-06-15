@@ -1,9 +1,9 @@
 import { BsCashCoin } from "react-icons/bs";
 import { FaRegTimesCircle } from "react-icons/fa";
 import { GrDeliver, GrLocation } from "react-icons/gr";
-import Review from "../MenuCarts/Review";
-import ReviewView from "../MenuCarts/ReviewView";
-import TotalReview from "../MenuCarts/TotalReview";
+// import TotalReview from "../MenuCarts/TotalReview";
+import Review from "../MenuCarts/ReviewView";
+import ReviewFrom from "../MenuCarts/Review";
 
 const MenuDeltes = () => {
   return (
@@ -100,13 +100,11 @@ const MenuDeltes = () => {
       <div className="mb-5 mt-5">
         <p>Ratings & Reviews</p>
 
-        <Review />
-        <TotalReview />
+        <ReviewFrom />
+        {/* <TotalReview /> */}
       </div>
       <div className=" flex gap-4 mb-2">
-        <ReviewView />
-        <ReviewView />
-        <ReviewView />
+        <Review></Review>
       </div>
     </div>
   );
