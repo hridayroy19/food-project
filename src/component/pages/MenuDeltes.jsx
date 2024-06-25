@@ -4,8 +4,83 @@ import { GrDeliver, GrLocation } from "react-icons/gr";
 // import TotalReview from "../MenuCarts/TotalReview";
 import Review from "../MenuCarts/ReviewView";
 import ReviewFrom from "../MenuCarts/Review";
+import { useContext, useEffect, useState } from "react";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+import { Authcontext } from "../provider/AuthProvider";
 
 const MenuDeltes = () => {
+  const [property, setProperty] = useState(null);
+  console.log("hello ", property);
+  const axiosPublic = useAxiosPublic()
+  const params = useParams();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axiosPublic.get(`/menu/${params.id}`);
+        const data = response.data;
+        setProperty(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [axiosPublic, params]);
+
+
+// add to cart
+const { user } = useContext(Authcontext);
+const handelAddCart = () => {
+  if (user && user?.email) {
+    const cartItem = {
+      menuItem: property._id,
+       name:property.name,
+      quantity: 1,
+      image:property.image,
+      price:property.price,
+      email: user?.email,
+    };
+    fetch("http://localhost:6001/addCart", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(cartItem),
+    }).then((res) =>
+      res.json().then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+    );
+  } else {
+    Swal.fire({
+      title: "plese login?",
+      text: "plese creat an login acount!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Signup!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/signup", { state: { from: location } });
+      }
+    });
+  }
+};
+
+
+
+
   return (
     <div className="max-w-screen-2xl ontainer bg-slate-100 mx-auto xl:px-24 px-4 ">
       <div className="flex flex-col lg:flex-row items-start gap-5  justify-between">
@@ -14,12 +89,12 @@ const MenuDeltes = () => {
             <div className="hero-content flex-col lg:flex-row">
               <div className="lg:w-[260px] xl:w-[470px] w-full lg:h-[300px] xl:h-[400px] border">
                 <img
-                  src="https://i.ibb.co/nD8Dcxb/pizza-5179939-640.jpg"
+                  src={property?.image}
                   className="w-full h-full object-cover rounded-lg shadow-2xl"
                 />
               </div>
               <div className="lg:w-[330px] w-full mt-5 lg:mt-0 lg:ml-5">
-                <h1 className="text-xl font-bold">No Girls Half Sleeve</h1>
+                <h1 className="text-xl font-bold">{property?.name} </h1>
                 <p>reating</p>
                 <p>Brand : No Brand | More Foods From No Brand</p>
                 <p className="text-2xl mt-5 mb-4 text-orange-500 font-semibold">
@@ -62,7 +137,9 @@ const MenuDeltes = () => {
                   <button className="border-2 p-2 rounded-sm text-white lg:w-[150px] w-full md:w-[220px] bg-[#1ed5f5]">
                     Buy Now
                   </button>
-                  <button className="border-2 p-2 rounded-sm text-white lg:w-[150px] w-full md:w-[220px] bg-orange-500">
+                  <button 
+                  onClick={() => handelAddCart()}
+                   className="border-2 p-2 rounded-sm text-white lg:w-[150px] w-full md:w-[220px] bg-orange-500">
                     Add to Cart
                   </button>
                 </div>

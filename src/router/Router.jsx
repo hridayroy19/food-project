@@ -63,7 +63,7 @@ const Router = createBrowserRouter([
         element:<OrderPage/>
       },
       {
-        path:'/menuDelets',
+        path:"/menuDelets/:id",
         element:<MenuDeltes/>
       }
     ]

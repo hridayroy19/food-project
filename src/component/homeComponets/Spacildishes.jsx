@@ -8,8 +8,7 @@ const SpecialDishes = () => {
   const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
-    axiosPublic
-      .get("/menu")
+    axiosPublic.get("/menu")
       .then((res) => {
         const specials = res.data.filter((item) => item.category === "popular");
         setRecipes(specials);

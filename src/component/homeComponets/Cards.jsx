@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { FaHeart } from "react-icons/fa";
 import { Authcontext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 const Cards = ({ item }) => {
   // console.log(item);
 
@@ -72,13 +72,13 @@ const Cards = ({ item }) => {
       </figure>
       </Link>
       <div className="card-body">
-      <Link to={"/menuDelets"}>  <h2 className="card-title hover:underline">{item.name}!</h2> </Link>
+      <NavLink  to={`/menuDelets/${item._id}`} >  <h2 className="card-title hover:underline">{item.name}!</h2> </NavLink>
         <p>Description of the item</p>
         <div className="card-actions justify-between items-center mt-2">
           <h5 className="font-semibold">
             <span className="text-sm text-red">$ </span> {item.price}
           </h5>
-          
+           
           <button
             onClick={() => handelAddCart()}
             className=" border-2 p-2 rounded-full bg-orange-500  hover:bg-black text-white"
