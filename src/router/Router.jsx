@@ -20,6 +20,7 @@ import Payment from "../component/pages/paymentMenu/Payment";
 import OrderPage from "../component/pages/paymentMenu/OrderPage";
 import MenuDeltes from "../component/pages/MenuDeltes";
 import ImageGalery from "../component/pages/ImageGalery";
+import OnlineBooking from "../component/pages/homeServices/OnlineBooking";
 
 
 const Router = createBrowserRouter([
@@ -65,6 +66,10 @@ const Router = createBrowserRouter([
       {
         path:"/menuDelets/:id",
         element:<MenuDeltes/>
+      },
+      {
+        path:"/online/Booking",
+        element:<OnlineBooking/>
       }
     ]
     },
